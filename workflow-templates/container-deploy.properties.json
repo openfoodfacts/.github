@@ -1,0 +1,9 @@
+{
+  "name": "Docker Compose Deployment",
+  "description": "Deploy Docker Compose configs over SSH.",
+  "iconName": "docker_compose.png",
+  "filePatterns": [
+    "^docker-compose.yml$",
+    "^Dockerfile$"
+  ]
+}
