@@ -1,7 +1,7 @@
 {
   "name": "Docker image build",
   "description": "Build Docker container images.",
-  "iconName": "docker.png",
+  "iconName": "docker.svg",
   "filePatterns": [
     "^Dockerfile*"
   ]
