@@ -115,6 +115,7 @@ jobs:
     - name: Check services are up
       uses: appleboy/ssh-action@master
       if: ${{ always() }}
+      id: livecheck
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
@@ -150,3 +151,11 @@ jobs:
         script: |
           cd ${{ github.event.repository.name }}/
           docker system prune -af
+
+    - uses: frankie567/grafana-annotation-action@v1.0.2
+      if: ${{ always() }}
+      with:
+        apiHost: https://grafana.openfoodfacts.org
+        apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
+        text: <a href="https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}">Deployment ${{ steps.livecheck.outcome }} on ${{ matrix.env }}</a>
+        tags: type:deployment,origin:github,status:${{ steps.livecheck.outcome }},repo:${{ github.repository }},sha:${{ github.sha }},app:robotoff,env:${{ matrix.env }}
