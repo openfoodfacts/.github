@@ -27,9 +27,23 @@ Data about food is of public interest and has to be open. The complete database 
 * <https://world.openfoodfacts.org/discover>
 
 ## Priorities
+### Server
+* Server (Perl)
+* Robotoff (Python)
+* Folksonomy Engine (Python/FastAPI) (Server, Demo app)
+* Infrastructure / Monitoring
+### Mobile
+* Android (Kotlin)
+* iPhone (Swift)
+* Smoothie (Cross platform: Dart/Flutter)
+### Tools and Gamification
+* Hunger Games (VueJS)
+* DriveOFF
+* Power User Script
+### Language SDKs
+Python - Python Server - Java - Go - RUST - JS - PHP - Laravel - Dart - R - Ruby
 
-* Please add roadmaps here
-
+### Documentation
 
 ## How do I get started?
 
