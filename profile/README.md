@@ -27,26 +27,33 @@ Data about food is of public interest and has to be open. The complete database 
 * <https://world.openfoodfacts.org/discover>
 
 ## Priorities
+### Design
+* [https://github.com/openfoodfacts/openfoodfacts-design](Design team)
 ### Server
-* [Server](https://github.com/openfoodfacts/openfoodfacts-server) ![Perl](https://img.shields.io/badge/perl-%2339457E.svg?style=for-the-badge&logo=perl&logoColor=white)
-* [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web)
-* [Robotoff](https://github.com/openfoodfacts/robotoff) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-* [Folksonomy Engine](https://github.com/openfoodfacts/folksonomy_api) (![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)/FastAPI) (Server, Demo app)
-* [Gamification](https://github.com/openfoodfacts/openfoodfacts-events)
+* [Server](https://github.com/openfoodfacts/openfoodfacts-server) (Perl, HTML, CSS, Dockerized)
+* [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web) (HTML/CSS)
+* [Robotoff](https://github.com/openfoodfacts/robotoff) (Python, Dockerized)
+* [Folksonomy Engine](https://github.com/openfoodfacts/folksonomy_api) (Python/FastAPI) (Server, [Demo app](https://github.com/openfoodfacts/folksonomy_mobile_experiment))
+* [Gamification](https://github.com/openfoodfacts/openfoodfacts-events) (Python/FastAPI)
 * [Infrastructure](https://github.com/openfoodfacts/openfoodfacts-infrastructure) / [Monitoring](https://github.com/openfoodfacts/openfoodfacts-monitoring)
 ### Mobile
 * [Android](https://github.com/openfoodfacts/openfoodfacts-androidapp) (Kotlin)
 * [iPhone](https://github.com/openfoodfacts/openfoodfacts-ios) (Swift)
 * [Smoothie](https://github.com/openfoodfacts/smooth-app) (Cross platform: Dart/Flutter)
+* [Ubuntu Mobile](https://github.com/openfoodfacts/openfoodfacts-ubuntu) - [https://github.com/openfoodfacts/openfoodfacts-ffos](FirefoxOS) - [Cordova](https://github.com/openfoodfacts/openfoodfacts-cordova-app) - [Cordova - Open Beauty Facts](https://github.com/openfoodfacts/openbeautyfacts-cordova-app)
+* [Folksonomy demo app](https://github.com/openfoodfacts/folksonomy_mobile_experiment)
+### Machine learning
+* [Open Food Facts AI - research](https://github.com/openfoodfacts/openfoodfacts-ai) (Python, mostly)
+* [Robotoff - AI fulfillment](https://github.com/openfoodfacts/robotoff) (Python)
 ### Tools and Gamification
 * [Hunger Games](https://github.com/openfoodfacts/openfoodfacts-hungergames) (VueJS)
-* [DriveOFF - Chrome and Firefox extension for e-commerce](https://github.com/openfoodfacts/DriveOFF)
-* [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/openfoodfacts-)
+* [DriveOFF - Chrome and Firefox extension for e-commerce](https://github.com/openfoodfacts/DriveOFF) (Pure JS)
+* [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS)
 ### Language SDKs
-[Python](https://github.com/openfoodfacts/openfoodfacts-python) - [Minimal Python Server](https://github.com/openfoodfacts/openfoodfacts-apirestpython) - [Java](https://github.com/openfoodfacts/openfoodfacts-java) - [Go](https://github.com/openfoodfacts/openfoodfacts-go) - [RUST](https://github.com/openfoodfacts/openfoodfacts-rust) - [NodeJS](https://github.com/openfoodfacts/openfoodfacts-nodejs) - [PHP](https://github.com/openfoodfacts/openfoodfacts-php) - [Laravel](https://github.com/openfoodfacts/openfoodfacts-laravel) - [Dart](https://github.com/openfoodfacts/openfoodfacts-dart) - [R](https://github.com/openfoodfacts/openfoodfacts-r) - [Ruby](https://github.com/openfoodfacts/openfoodfacts-ruby) - [Ruby (OBF)](https://github.com/openfoodfacts/openbeautyfacts-ruby) - [Elixir](https://github.com/openfoodfacts/openfoodfacts-elixir)
+[Python](https://github.com/openfoodfacts/openfoodfacts-python) - [Minimal Python Server](https://github.com/openfoodfacts/openfoodfacts-apirestpython) - [Java](https://github.com/openfoodfacts/openfoodfacts-java) ([and its demo](https://github.com/openfoodfacts/openfoodfacts-java-demo))- [Go](https://github.com/openfoodfacts/openfoodfacts-go) - [RUST](https://github.com/openfoodfacts/openfoodfacts-rust) - [NodeJS](https://github.com/openfoodfacts/openfoodfacts-nodejs) - [PHP](https://github.com/openfoodfacts/openfoodfacts-php) - [Laravel](https://github.com/openfoodfacts/openfoodfacts-laravel) - [Dart](https://github.com/openfoodfacts/openfoodfacts-dart) - [R](https://github.com/openfoodfacts/r-dashboard) - [Ruby](https://github.com/openfoodfacts/openfoodfacts-ruby) - [Ruby (OBF)](https://github.com/openfoodfacts/openbeautyfacts-ruby) - [Elixir](https://github.com/openfoodfacts/openfoodfacts-elixir) - [React Native](https://github.com/openfoodfacts/openfoodfacts-react-native)
 
 ### Documentation
-[API documentation](https://github.com/openfoodfacts/api-documentation)
+[API documentation](https://github.com/openfoodfacts/api-documentation) (OpenAPI)
 ## How do I get started?
 
 * Join us on Slack at <https://openfoodfacts.slack.com/> in the channels: `#api`, `#productopener`, `#dev`.
