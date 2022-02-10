@@ -40,7 +40,7 @@ Data about food is of public interest and has to be open. The complete database 
 * [Android](https://github.com/openfoodfacts/openfoodfacts-androidapp) (Kotlin)
 * [iPhone](https://github.com/openfoodfacts/openfoodfacts-ios) (Swift)
 * [Smoothie](https://github.com/openfoodfacts/smooth-app) (Cross platform: Dart/Flutter)
-* [Ubuntu Mobile](https://github.com/openfoodfacts/openfoodfacts-ubuntu) - [https://github.com/openfoodfacts/openfoodfacts-ffos](FirefoxOS) - [Cordova](https://github.com/openfoodfacts/openfoodfacts-cordova-app) - [Cordova - Open Beauty Facts](https://github.com/openfoodfacts/openbeautyfacts-cordova-app)
+* [Ubuntu Mobile](https://github.com/openfoodfacts/openfoodfacts-ubuntu) - [FirefoxOS](https://github.com/openfoodfacts/openfoodfacts-ffos) - [Cordova](https://github.com/openfoodfacts/openfoodfacts-cordova-app) - [Cordova - Open Beauty Facts](https://github.com/openfoodfacts/openbeautyfacts-cordova-app)
 * [Folksonomy demo app](https://github.com/openfoodfacts/folksonomy_mobile_experiment)
 ### Machine learning
 * [Open Food Facts AI - research](https://github.com/openfoodfacts/openfoodfacts-ai) (Python, mostly)
