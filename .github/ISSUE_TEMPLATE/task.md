@@ -8,4 +8,9 @@ assignees: ''
 
 ---
 
-Story: #
+### Story
+-
+
+### Part of
+- (Insert Story issue number here)
+
