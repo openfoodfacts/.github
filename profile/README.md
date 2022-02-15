@@ -28,7 +28,7 @@ Data about food is of public interest and has to be open. The complete database 
 
 ## Priorities
 ### Design
-* [Design team](https://github.com/openfoodfacts/openfoodfacts-design)
+* [Design team](https://github.com/openfoodfacts/openfoodfacts-design) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-design/issues/3)
 ### Server
 * [Server](https://github.com/openfoodfacts/openfoodfacts-server) (Perl, HTML, CSS, Dockerized) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529))
 * [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web) (HTML/CSS) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-web/issues/206))
