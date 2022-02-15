@@ -1,0 +1,8 @@
+{
+  "name": "Enforce Semantic PRs",
+  "description": "Enforce Semantic PRs",
+  "iconName": "docker_compose",
+  "filePatterns": [
+    "^semantic-pr.yml$"
+  ]
+}
