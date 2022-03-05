@@ -1,0 +1,9 @@
+{
+  "name": "Issue Labeler",
+  "description": "Automatically label issues",
+  "iconName": "docker_compose",
+  "filePatterns": [
+    "^issue-label.yml$",
+    "^issue-labeler.yml$"
+  ]
+}
