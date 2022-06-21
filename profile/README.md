@@ -32,6 +32,9 @@ Data about food is of public interest and has to be open. The complete database 
 ### Server
 * [Server](https://github.com/openfoodfacts/openfoodfacts-server) (Perl, HTML, CSS, Dockerized) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)) ([Server-side project management](https://github.com/orgs/openfoodfacts/projects/12))
 * [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web) (HTML/CSS) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-web/issues/206))
+
+### Taxonomies
+* [Taxonomy Editor](https://github.com/openfoodfacts/taxonomy-editor)
 ### Folksonomy Engine
 * [Folksonomy Engine cross platform project management](https://github.com/orgs/openfoodfacts/projects/5)
 * [Folksonomy Engine](https://github.com/openfoodfacts/folksonomy_api) (Python/FastAPI) ([Server](https://github.com/openfoodfacts/folksonomy_api) ([What can I work on ?](https://github.com/openfoodfacts/folksonomy_api/issues/70))
@@ -40,6 +43,7 @@ Data about food is of public interest and has to be open. The complete database 
 ### Other
 * [Gamification](https://github.com/openfoodfacts/openfoodfacts-events) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-events/issues/33))
 * [Infrastructure](https://github.com/openfoodfacts/openfoodfacts-infrastructure) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-infrastructure/issues/88)) / [Monitoring](https://github.com/openfoodfacts/openfoodfacts-monitoring) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-monitoring/issues/1)) ([Infrastructure & Monitoring project management](https://github.com/orgs/openfoodfacts/projects/19)
+* [Community Portal](https://github.com/openfoodfacts/community-portal)
 
 
 ### Mobile
