@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-light.png">
   <img height="100" src="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-light.svg">
 </picture>
 
@@ -75,6 +75,12 @@ Data about food is of public interest and has to be open. The complete database 
 
 ### Marketing
 * Marketing coordination - [Project management](https://github.com/orgs/openfoodfacts/projects/24)
+
+### GSOC Projects
+* [Knowledge Panels for Facets](https://github.com/openfoodfacts/facets-knowledge-panels/) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/facets-knowledge-panels/issues/14))
+* [Taxonomy Editor](https://github.com/openfoodfacts/taxonomy-editor) (Python/Neo4J) ([What can I work on ?](https://github.com/openfoodfacts/taxonomy-editor/issues/30))
+### GSOD Project
+
 
 ### Non Food products
 * Cosmetics - [Open Beauty Facts](https://github.com/orgs/openfoodfacts/projects/9)
