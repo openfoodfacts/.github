@@ -60,7 +60,7 @@ Data about food is of public interest and has to be open. The complete database 
 * [Open Food Facts AI - research](https://github.com/openfoodfacts/openfoodfacts-ai) (Python, mostly) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-ai/issues/76))
 * [Robotoff - AI fulfillment](https://github.com/openfoodfacts/robotoff) (Python) ([What can I work on ?](https://github.com/openfoodfacts/robotoff/issues/374))
 ### Tools and Gamification
-* [Hunger Games](https://github.com/openfoodfacts/openfoodfacts-hungergames) (VueJS) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-hungergames/issues/234)) ([Hunger Games project management](https://github.com/orgs/openfoodfacts/projects/21))
+* [Hunger Games](https://github.com/openfoodfacts/hunger-games) (React) ([What can I work on ?](https://github.com/openfoodfacts/hunger-games/issues/37)) ([Hunger Games project management](https://github.com/orgs/openfoodfacts/projects/40))
 * [DriveOFF - Chrome and Firefox extension for e-commerce](https://github.com/openfoodfacts/DriveOFF) (Pure JS) ([What can I work on ?](https://github.com/openfoodfacts/DriveOFF/issues/4))
 * [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS) ([What can I work on ?](https://github.com/openfoodfacts/power-user-script/issues/64))
 
