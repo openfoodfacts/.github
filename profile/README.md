@@ -79,9 +79,8 @@ Data about food is of public interest and has to be open. The complete database 
 ### GSOC Projects
 * [Knowledge Panels for Facets](https://github.com/openfoodfacts/facets-knowledge-panels/) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/facets-knowledge-panels/issues/14))
 * [Taxonomy Editor](https://github.com/openfoodfacts/taxonomy-editor) (Python/Neo4J) ([What can I work on ?](https://github.com/openfoodfacts/taxonomy-editor/issues/30))
+* [Community Portal](https://github.com/openfoodfacts/community-portal) (Paused)
 ### GSOD Project
-
-
 ### Non Food products
 * Cosmetics - [Open Beauty Facts](https://github.com/orgs/openfoodfacts/projects/9)
 * Products - [Open Products Facts](https://github.com/orgs/openfoodfacts/projects/8)
