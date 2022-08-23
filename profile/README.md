@@ -45,6 +45,9 @@ Data about food is of public interest and has to be open. The complete database 
 * [Gamification](https://github.com/openfoodfacts/openfoodfacts-events) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-events/issues/33))
 * [Infrastructure](https://github.com/openfoodfacts/openfoodfacts-infrastructure) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-infrastructure/issues/88)) / [Monitoring](https://github.com/openfoodfacts/openfoodfacts-monitoring) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-monitoring/issues/1)) ([Infrastructure & Monitoring project management](https://github.com/orgs/openfoodfacts/projects/19)
 
+### Search
+* [Search using Elastic](https://github.com/openfoodfacts/openfoodfacts-search) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-search/issues/1))
+
 
 ### Mobile
 * [New official app (Android/iPhone) in Flutter - Codename Smoothie](https://github.com/openfoodfacts/smooth-app) (Cross platform: Dart/Flutter) ([What can I work on ?](https://github.com/openfoodfacts/smooth-app/issues/525)) ([Smoothie project management](https://github.com/orgs/openfoodfacts/projects/7)
