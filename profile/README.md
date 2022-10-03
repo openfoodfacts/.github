@@ -86,8 +86,8 @@ Data about food is of public interest and has to be open. The complete database 
 ### GSOD Project
 ### Non Food products
 * Cosmetics - [Open Beauty Facts](https://github.com/orgs/openfoodfacts/projects/9)
-* Products - [Open Products Facts](https://github.com/orgs/openfoodfacts/projects/8)
-* Pet Food - [Open Pet Food Facts](https://github.com/orgs/openfoodfacts/projects/6)
+* Products - [Open Products Facts](https://github.com/orgs/openfoodfacts/projects/43)
+* Pet Food - [Open Pet Food Facts](https://github.com/orgs/openfoodfacts/projects/36)
 
 ## How do I get started?
 
