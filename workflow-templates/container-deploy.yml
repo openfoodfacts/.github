@@ -14,11 +14,32 @@ jobs:
     strategy:
       matrix:
         env:
-          - ${{ startsWith(github.ref, 'refs/tags/v') && secrets.PROD_ENV_NAME || secrets.STAGING_ENV_NAME }}
+          # FIXME name you envs, see reuse below
+          # it's also the name of the directory for the application
+          - ${{ startsWith(github.ref, 'refs/tags/v') && PROD_ENV_NAME || STAGING_ENV_NAME }}
     environment: ${{ matrix.env }}
     concurrency: ${{ matrix.env }}
     steps:
-    - name: Wait for frontend container build workflow
+    - name: Set various variable for staging deployment
+      if: matrix.env == STAGING_ENV_NAME
+      run: |
+        # configurations
+        echo "MY_CONFIG=my_value" >> $GITHUB_ENV
+        # deploy target
+        echo "SSH_HOST=10.1.0.200" >> $GITHUB_ENV
+        echo "SSH_PROXY_HOST=ovh1.openfoodfacts.org" >> $GITHUB_ENV
+        echo "SSH_USERNAME=off" >> $GITHUB_ENV
+    - name: Set various variable for production deployment
+      if: matrix.env == PROD_ENV_NAME
+      run: |
+        # configurations
+        echo "MY_CONFIG=my_value" >> $GITHUB_ENV
+        # deploy target
+        echo "SSH_HOST=10.1.0.200" >> $GITHUB_ENV
+        echo "SSH_PROXY_HOST=ovh1.openfoodfacts.org" >> $GITHUB_ENV
+        echo "SSH_USERNAME=off" >> $GITHUB_ENV
+
+    - name: Wait for container build workflow
       uses: tomchv/wait-my-workflow@v1.1.0
       id: wait-build
       with:
@@ -43,11 +64,11 @@ jobs:
     - name: Checkout git repository
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.USERNAME }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
         proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
@@ -66,50 +87,54 @@ jobs:
     - name: Set environment variables
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.USERNAME }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
         proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           # Go to repository directory
           cd ${{ matrix.env }}
 
+          # new env
+          rm .env
+          touch .env
           # Set Docker Compose variables
-          echo "DOCKER_CLIENT_TIMEOUT=120" > .env
+          echo "DOCKER_CLIENT_TIMEOUT=120" >> .env
           echo "COMPOSE_HTTP_TIMEOUT=120" >> .env
-          echo "COMPOSE_PROJECT_NAME=po" >> .env
+          # echo "COMPOSE_PROJECT_NAME=my-project-name" >> .env
           echo "COMPOSE_PATH_SEPARATOR=;" >> .env
-          echo "COMPOSE_FILE=docker-compose.yml" >> .env
+          # echo "COMPOSE_FILE=docker-compose.yml;docker/prod.yml" >> .env
           echo "TAG=sha-${{ github.sha }}" >> .env
 
           # App environment variables
           # echo "MY_APP_VAR1=some_value" >> .env
+          # echo "MY_CONFIG={{ env.MY_CONFIG }}" >> .env
 
-    # - name: Create external Docker volumes
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.HOST }}
-    #     username: ${{ secrets.USERNAME }}
-    #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-    #     proxy_host: ${{ secrets.PROXY_HOST }}
-    #     proxy_username: ${{ secrets.USERNAME }}
-    #     proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-    #     script_stop: false
-    #     script: |
-    #       cd ${{ matrix.env }}
-    #       docker volume create <VOLUME_NAME>
+    - name: Create external Docker volumes
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
+        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script_stop: false
+        script: |
+          cd ${{ matrix.env }}
+          docker volume create <VOLUME_NAME>
 
     - name: Start services
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.USERNAME }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
         proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
@@ -121,11 +146,11 @@ jobs:
       if: ${{ always() }}
       id: livecheck
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.USERNAME }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
         proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
@@ -145,11 +170,11 @@ jobs:
       uses: appleboy/ssh-action@master
       if: ${{ always() }}
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ env.SSH_HOST }}
+        username: ${{ env.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        proxy_host: ${{ secrets.PROXY_HOST }}
-        proxy_username: ${{ secrets.USERNAME }}
+        proxy_host: ${{ env.SSH_PROXY_HOST }}
+        proxy_username: ${{ env.SSH_USERNAME }}
         proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
