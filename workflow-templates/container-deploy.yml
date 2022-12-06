@@ -49,7 +49,7 @@ jobs:
         intervalSeconds: 10
         timeoutSeconds: 600 # 10m
 
-    - name: Do something if build isn't launch
+    - name: Do something if build isn't launched
       if: steps.wait-build.outputs.conclusion == 'not found'
       run: echo job does not exist && true
 
