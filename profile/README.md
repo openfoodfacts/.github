@@ -30,7 +30,93 @@ Data about food is of public interest and has to be open. The complete database 
 
 * <https://world.openfoodfacts.org/discover>
 
-## Priorities
+## How can I help?
+
+To start contributing, the easiest way it to join us on Slack <https://openfoodfacts.slack.com/> and post an introduction about, what you're interested in, and what you would like to do.
+This would allows other contributors to pin point projects that could match your interests. For example
+
+> I'm interested by the environemental impact of food and would like to help. I'm a designer, but I would also be interested by how you estimate the environmental impact of products.
+
+> I'm using the App, and wondering how could I help to improve it.
+
+> I'm a student, in computer science, and would like to help with some developpement. I already do some React, and Python.
+
+### Main roles
+
+Since we are on GitHub, you can guess that OpenFoodFacts needs some contributions from developpers and designers (main projects are detailed in next section). But their is plenty of other way to contribute. For example, you could:
+
+- Add and clean data: You have a product at home, take time to scan it to sse if the data are up to date.
+- Spread the word: Speak about the project around you to grow up the community. We have doments to help you.
+- Translate the project: to be more accessible, the pages needs to be translated.
+- Improve food understanding: You're interested by the meaning of labels, how distinctions between the variouse kinds of tomato saucages, we need you're help to improve how data are structured.
+- You want to reuse the data for creating your own application, of some scientific studies, feel free to contact us to present the project and ask for help/explainations about data
+- Any other improvement you can think about
+
+## Reporting problems or asking for a feature
+
+Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue. You can ask directly in the discussion room if you're not sure
+
+## Translate Open Food Facts in your language
+
+You can help translate the Open Food Facts web version and the app at :
+<https://translate.openfoodfacts.org/> (no technical knowledge required, takes a minute to signup)
+
+## Developpers
+
+Here are the main developpement project, under active developpement
+
+- OFF servers (Perl | HTML/CSS | JS)
+
+  This repository is the main website (openfoodfacts.org) and the API used by other aplications.
+
+  Due to the implementation of the new design their is a bunch of small CSS issues to be fixed, and some UX improvements.
+
+  [The reposotry](https://github.com/openfoodfacts/openfoodfacts-server) | [What can I work on?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)
+
+- Folksonmoy Engine (Python)
+
+  A full Python project to extend the default API. The main idea is to empower contributors by allowing them to add any information to a product.
+
+  [The reposotry]() | [What can I work on?]()
+
+  The project comes with some fronted to be integrated with the main website, and a deomnstration application
+
+  [The frontend reposotry]() | [What can I work on?]()
+  [The application reposotry]() | [What can I work on?]()
+
+- Taxonomy editor
+
+  An application made with Python/React that simplify manipulation of the taxonomy (the knowledge graph explaining that for example the yogurt is a kind of milk food).
+  
+  This project has the adventage of being well scoped, and new (start developpement in 2022). The disaventage being the complexity of the taxonomy which can take some time to fully hunderstand.
+
+  [The reposotry](https://github.com/openfoodfacts/taxonomy-editor) | [What can I work on?]()
+  
+- Robotoff
+  
+  This project groups the machine learning pipeline used by OFF to simplify contribution. Detecting labels, extracting ingredients, ...
+
+  Most of the code is writen in Python, and their is need for both improving machine learning methods, but also improvingdata management and API interface.
+
+  A lot of rexperiment have already been done. Some of them failled, others need refinement. Better asing before starting an issue to avoid rabit holes 😉
+  
+  [The repository](https://github.com/openfoodfacts/robotoff) | [What can I work on?](https://github.com/openfoodfacts/robotoff/issues/374)
+
+-  Hunger Games
+
+  A web app used to gamify contribution. It's a React web app that ask questions based on predictions made by Robotoff
+  
+  [The repository]() | [What can I work on?]()
+
+- Mobile
+- Extensions
+- Search
+- Design
+- Static web site
+
+* [API Documentation](https://openfoodfacts.github.io/api-documentation/) - [Staging](https://github.com/openfoodfacts/api-documentation-staging)
+
+
 ### Design
 * [Design team](https://github.com/openfoodfacts/openfoodfacts-design) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-design/issues/3)) ([UXR & Design project management accross Open Food Facts](https://github.com/orgs/openfoodfacts/projects/11)
 ### Server
@@ -83,32 +169,19 @@ Data about food is of public interest and has to be open. The complete database 
 * [Knowledge Panels for Facets](https://github.com/openfoodfacts/facets-knowledge-panels/) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/facets-knowledge-panels/issues/14))
 * [Taxonomy Editor](https://github.com/openfoodfacts/taxonomy-editor) (Python/Neo4J) ([What can I work on ?](https://github.com/openfoodfacts/taxonomy-editor/issues/30))
 * [Community Portal](https://github.com/openfoodfacts/community-portal) (Paused)
-### GSOD Project
+
 ### Non Food products
 * Cosmetics - [Open Beauty Facts](https://github.com/orgs/openfoodfacts/projects/9)
 * Products - [Open Products Facts](https://github.com/orgs/openfoodfacts/projects/43)
 * Pet Food - [Open Pet Food Facts](https://github.com/orgs/openfoodfacts/projects/36)
-
-## How do I get started?
-
-* Join us on Slack at <https://openfoodfacts.slack.com/> in the channels: `#api`, `#productopener`, `#dev`.
-* [API Documentation](https://openfoodfacts.github.io/api-documentation/) - [Staging](https://github.com/openfoodfacts/api-documentation-staging)
-
-## Reporting problems or asking for a feature
-
-Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue. You can ask directly in the discussion room if you're not sure
-
-## Translate Open Food Facts in your language
-
-You can help translate the Open Food Facts web version and the app at :
-<https://translate.openfoodfacts.org/> (no technical knowledge required, takes a minute to signup)
 
 
 ### Who do I talk to?
 
 * Join our discussion room at <https://slack.openfoodfacts.org/> Make sure to join the appropriate channels. Stéphane, Pierre, Charles or Hangy will be around to help you get started.
 
-## Contributors
+## Contributor
+s
 
 This project exists thanks to all the people who contribute.
 
