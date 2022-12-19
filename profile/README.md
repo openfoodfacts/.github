@@ -180,8 +180,7 @@ Here are the main development projects, under active development:
 
 * Join our discussion room at <https://slack.openfoodfacts.org/> Make sure to join the appropriate channels. Stéphane, Pierre, Charles or Hangy will be around to help you get started.
 
-## Contributor
-s
+## Contributors
 
 This project exists thanks to all the people who contribute.
 
