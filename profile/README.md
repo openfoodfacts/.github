@@ -45,11 +45,11 @@ This would allow other contributors to pinpoint projects that could match your i
 
 Since we are on GitHub, you can guess that Open Food Facts needs some contributions from developers and designers (main projects are detailed in next section). But there are plenty of other ways to contribute. For example, you could:
 
-- Add and clean data: You have a product at home, take time to scan it to sse if the data are up to date.
-- Spread the word: Speak about the project around you to grow up the community. We have doments to help you.
-- Translate the project: to be more accessible, the pages needs to be translated.
-- Improve food understanding: You're interested by the meaning of labels, how distinctions between the variouse kinds of tomato saucages, we need you're help to improve how data are structured.
-- You want to reuse the data for creating your own application, of some scientific studies, feel free to contact us to present the project and ask for help/explainations about data
+- Add and clean data: You have a product at home, take time to scan it to see if the data is up to date.
+- Spread the word: Speak about the project around you to grow up the community. We [have documents to help you](https://blog.openfoodfacts.org/en/news/presenting-open-food-facts-at-events-study-case).
+- Translate the project: to be more accessible, the [pages needs to be translated](https://crowdin.com/project/openfoodfacts).
+- Improve food understanding: You're interested by the meaning of labels, by distinctions between the various kinds of tomato sauces, we need your help to improve how data are structured.
+- You want to reuse the data for creating your own application, of some scientific studies, feel free to contact us to present the project and ask for help/explanations about data
 - Any other improvement you can think about
 
 ## Reporting problems or asking for a feature
