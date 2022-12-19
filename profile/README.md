@@ -32,7 +32,7 @@ Data about food is of public interest and has to be open. The complete database 
 
 ## How can I help?
 
-To start contributing, the easiest way it to join us on Slack <https://openfoodfacts.slack.com/> and post an introduction about, what you're interested in, and what you would like to do.
+To start contributing, the easiest way it to join us on Slack <https://slack.openfoodfacts.org/> and post an introduction about, what you're interested in, and what you would like to do.
 This would allows other contributors to pin point projects that could match your interests. For example
 
 > I'm interested by the environemental impact of food and would like to help. I'm a designer, but I would also be interested by how you estimate the environmental impact of products.
