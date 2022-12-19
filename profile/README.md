@@ -63,7 +63,7 @@ You can help translate the Open Food Facts web version and the app at :
 
 ## Developpers
 
-Here are the main developpement project, under active developpement
+Here are the main development projects, under active development:
 
 - OFF servers (Perl | HTML/CSS | JS)
 
