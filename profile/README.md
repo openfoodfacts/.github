@@ -67,44 +67,44 @@ Here are the main development projects, under active development:
 
 - OFF servers (Perl | HTML/CSS | JS)
 
-  This repository is the main website (openfoodfacts.org) and the API used by other aplications.
+  This repository is the main website (openfoodfacts.org) and the API used by other applications.
 
-  Due to the implementation of the new design their is a bunch of small CSS issues to be fixed, and some UX improvements.
+  Due to the implementation of the new design, there is a bunch of small CSS issues to be fixed, and some UX improvements.
 
-  [The reposotry](https://github.com/openfoodfacts/openfoodfacts-server) | [What can I work on?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)
+  [The repository](https://github.com/openfoodfacts/openfoodfacts-server) | [What can I work on?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)
 
-- Folksonmoy Engine (Python)
+- Folksonomy Engine (Python)
 
   A full Python project to extend the default API. The main idea is to empower contributors by allowing them to add any information to a product.
 
-  [The reposotry]() | [What can I work on?]()
+  [The repository]() | [What can I work on?]()
 
-  The project comes with some fronted to be integrated with the main website, and a deomnstration application
+  The project comes with some fronted to be integrated with the main website, and a demonstration application
 
-  [The frontend reposotry]() | [What can I work on?]()
-  [The application reposotry]() | [What can I work on?]()
+  [The frontend repository]() | [What can I work on?]()
+  [The application repository]() | [What can I work on?]()
 
 - Taxonomy editor
 
-  An application made with Python/React that simplify manipulation of the taxonomy (the knowledge graph explaining that for example the yogurt is a kind of milk food).
+  An application made with Python/React that simplifies manipulation of the taxonomy (the knowledge graph explaining that - for example - the yogurt is a kind of milk food).
   
-  This project has the adventage of being well scoped, and new (start developpement in 2022). The disaventage being the complexity of the taxonomy which can take some time to fully hunderstand.
+  This project has the advantage of being well scoped, and new (development started in 2022). The disadvantage being the complexity of the taxonomy which can take some time to fully understand.
 
-  [The reposotry](https://github.com/openfoodfacts/taxonomy-editor) | [What can I work on?]()
+  [The repository](https://github.com/openfoodfacts/taxonomy-editor) | [What can I work on?]()
   
 - Robotoff
   
-  This project groups the machine learning pipeline used by OFF to simplify contribution. Detecting labels, extracting ingredients, ...
+  This project groups the machine learning pipelines used by Open Food Facts to simplify contribution. Detecting labels, extracting ingredients…
 
-  Most of the code is writen in Python, and their is need for both improving machine learning methods, but also improvingdata management and API interface.
+  Most of the code is written in Python, and there's a need for both improving machine learning methods, but also improving data management and API interface.
 
-  A lot of rexperiment have already been done. Some of them failled, others need refinement. Better asing before starting an issue to avoid rabit holes 😉
+  A lot of experiments have already been done. Some of them failed, others need refinement. Better ask before starting an issue to avoid rabbit holes 🐰😉
   
   [The repository](https://github.com/openfoodfacts/robotoff) | [What can I work on?](https://github.com/openfoodfacts/robotoff/issues/374)
 
 -  Hunger Games
 
-  A web app used to gamify contribution. It's a React web app that ask questions based on predictions made by Robotoff
+  A web app used to gamify contribution. It's a React web app that asks questions based on predictions made by Robotoff.
   
   [The repository]() | [What can I work on?]()
 
