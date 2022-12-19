@@ -43,7 +43,7 @@ This would allows other contributors to pin point projects that could match your
 
 ### Main roles
 
-Since we are on GitHub, you can guess that OpenFoodFacts needs some contributions from developpers and designers (main projects are detailed in next section). But their is plenty of other way to contribute. For example, you could:
+Since we are on GitHub, you can guess that Open Food Facts needs some contributions from developers and designers (main projects are detailed in next section). But there are plenty of other ways to contribute. For example, you could:
 
 - Add and clean data: You have a product at home, take time to scan it to sse if the data are up to date.
 - Spread the word: Speak about the project around you to grow up the community. We have doments to help you.
