@@ -104,9 +104,9 @@ Here are the main development projects, under active development:
 
 -  Hunger Games
 
-  A web app used to gamify contribution. It's a React web app that asks questions based on predictions made by Robotoff.
+   A web app used to gamify contribution. It's a React web app that asks questions based on predictions made by Robotoff.
   
-  [The repository]() | [What can I work on?]()
+   [The repository](https://github.com/openfoodfacts/hunger-games) | [What can I work on?](https://github.com/openfoodfacts/hunger-games/issues/37)
 
 - Mobile
 - Extensions
