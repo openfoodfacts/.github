@@ -39,7 +39,7 @@ This would allow other contributors to pinpoint projects that could match your i
 
 > I'm using the App, and wondering how could I help to improve it.
 
-> I'm a student, in computer science, and would like to help with some developpement. I already do some React, and Python.
+> I'm a student, in computer science, and would like to help with some developement. I already do some React, and Python.
 
 ### Main roles
 
@@ -61,7 +61,7 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 You can help translate the Open Food Facts web version and the app at :
 <https://translate.openfoodfacts.org/> (no technical knowledge required, takes a minute to signup)
 
-## Developpers
+## Developers
 
 Here are the main development projects, under active development:
 
