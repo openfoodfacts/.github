@@ -39,7 +39,7 @@ This would allow other contributors to pinpoint projects that could match your i
 
 > I'm using the App, and wondering how could I help to improve it.
 
-> I'm a student, in computer science, and would like to help with some developement. I already do some React, and Python.
+> I'm a student, in computer science, and would like to help with some development. I already do some React, and Python.
 
 ### Main roles
 
