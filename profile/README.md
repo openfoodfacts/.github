@@ -72,17 +72,15 @@ Here are the main development projects, under active development:
   Due to the implementation of the new design, there is a bunch of small CSS issues to be fixed, and some UX improvements.
 
   [The repository](https://github.com/openfoodfacts/openfoodfacts-server) | [What can I work on?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)
+  
+- Mobile app (Flutter | Dart)
 
-- Folksonomy Engine (Python)
-
-  A full Python project to extend the default API. The main idea is to empower contributors by allowing them to add any information to a product.
-
-  [The repository]() | [What can I work on?]()
-
-  The project comes with some fronted to be integrated with the main website, and a demonstration application
-
-  [The frontend repository]() | [What can I work on?]()
-  [The application repository]() | [What can I work on?]()
+  This is the official mobile application, a very important tool that help people in their everyday choices about food
+  and also invite them to contribute to the database.
+  
+  [The repository](https://github.com/openfoodfacts/smooth-app/) | [What can I work on?](https://github.com/openfoodfacts/smooth-app/issues/525)
+  
+  A companion project is the [dart-sdk](https://github.com/openfoodfacts/openfoodfacts-dart/)
 
 - Taxonomy editor
 
@@ -101,20 +99,19 @@ Here are the main development projects, under active development:
   A lot of experiments have already been done. Some of them failed, others need refinement. Better ask before starting an issue to avoid rabbit holes 🐰😉
   
   [The repository](https://github.com/openfoodfacts/robotoff) | [What can I work on?](https://github.com/openfoodfacts/robotoff/issues/374)
+  
+  ML research and models can be found in [openfoodfacts-ai repository](https://github.com/openfoodfacts/openfoodfacts-ai/)
 
--  Hunger Games
+- Hunger Games
 
   A web app used to gamify contribution. It's a React web app that asks questions based on predictions made by Robotoff.
   
-  [The repository]() | [What can I work on?]()
+  [The repository](https://github.com/openfoodfacts/hunger-games/) | [What can I work on?](https://github.com/openfoodfacts/hunger-games/issues/37)
+  
+- Other currently important projects:
 
-- Mobile
-- Extensions
-- Search
-- Design
-- Static web site
-
-* [API Documentation](https://openfoodfacts.github.io/api-documentation/) - [Staging](https://github.com/openfoodfacts/api-documentation-staging)
+  - [Open Food Facts Events](https://github.com/openfoodfacts/openfoodfacts-events) could be the bare bone of Gamification, user dashboard, data moderation, but needs help to fix some bug and extend it
+  - [Folksonomy engine](https://github.com/openfoodfacts/folksonomy_api) can help extend annotations with free attributes. Bug fixes are needed as well as some extensions
 
 
 ### Design
