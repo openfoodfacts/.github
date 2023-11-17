@@ -131,6 +131,8 @@ Here are the main development projects, under active development:
 ### Search
 * [Search using Elastic](https://github.com/openfoodfacts/openfoodfacts-search) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-search/issues/1))
 
+### Prices
+* [Open Prices](https://github.com/openfoodfacts/open-prices) ([What can I work on ?](https://github.com/openfoodfacts/open-prices/issues/1))
 
 ### Mobile
 * [New official app (Android/iPhone) in Flutter - Codename Smoothie](https://github.com/openfoodfacts/smooth-app) (Cross platform: Dart/Flutter) ([What can I work on ?](https://github.com/openfoodfacts/smooth-app/issues/525)) ([Smoothie project management](https://github.com/orgs/openfoodfacts/projects/7)
