@@ -3,7 +3,7 @@ name: Task
 about: Template for tasks. Tasks are a small unit of work, usually resulting of breaking
   down a user story or other bigger items of a sprint backlog.
 title: ''
-labels: '✔ task'
+labels: '✅ Task'
 assignees: ''
 
 ---
@@ -12,5 +12,5 @@ assignees: ''
 -
 
 ### Part of
-- (Insert Story issue number here)
+- <!-- Insert Story issue number here -->
 
