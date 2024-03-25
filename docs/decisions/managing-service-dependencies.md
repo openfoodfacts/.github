@@ -44,6 +44,7 @@ The custom tool will do the following:
 * Good, because a single command can be run to bring up a service with all of its dependencies
 * Good, because each repository can use its own docker project
 * Neutral, because cloning referenced projects may take time. It is suggested that a filtered clone is performed, e.g. `git clone --filter=blob:none --sparse https://github.com/openfoodfacts/service.git`
+* Neutral, environment variables need to be unique across projects to avoid conflicts (unless they refer to the same thing), e.g. database username and password variables would need to be prefixed with the owning service name, whereas the REDIS_URL could be shared
 * Bad, because this will be something else that developers need to learn about when joining the team
 
 ### Confirmation
