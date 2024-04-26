@@ -2,11 +2,11 @@
 
 ## Context and Problem Statement
 
-As we split OpenFoodFacts up into smaller, more manageable, services, it becomes increasingly difficult for developers to know what additional services need to be deployed in order for the service they are working on to function correctly. This becomes increasingly difficult if the referenced service itself has other dependencies.
+As we split Open Food Facts up into smaller, more manageable, services, it becomes increasingly difficult for developers to know what additional services need to be deployed in order for the service they are working on to function correctly. This becomes increasingly difficult if the referenced service itself has other dependencies.
 
 Note that for development and testing purposes it is recommended that any dependencies are mocked or managed using tools like testcontainers, rather than relying on a separate service being up. This document concerns itself more with creating a workable end-to-end deployment that can be used for ad-hoc, interactive testing and discovery.
 
-This document is specifically concerned with "internal" dependencies where shared state is needed, e.g. each service can have its own independent database rather than relying on a shared database service, but the messaging system (Redis) needs to be shared in order for messages to pass between services. Dependencies on services outside the scope of OpenFoodFacts are referred to as "external" dependencies.
+This document is specifically concerned with "internal" dependencies where shared state is needed, e.g. each service can have its own independent database rather than relying on a shared database service, but the messaging system (Redis) needs to be shared in order for messages to pass between services. Dependencies on services outside the scope of Open Food Facts are referred to as "external" dependencies.
 
 ## Decision Drivers
 
@@ -28,7 +28,7 @@ Custom tooling will be used so that we can cope with circular dependencies and t
 Each project must provide the following:
 
 * A file with the list of other services it depends on
-* a docker compose file which loads the service and any of its external dependencies from the latest available images
+* a docker compose file which loads the service and any of its external dependencies (from the latest stable images by default, but configurable through environment)
 * associated list of environment variables with default values that will allow the service to start without intervention
 * an optional file (not in source control) that allows the developer to override environment defaults
 * all of the files referenced by the above must be in the root folder, to facilitate a sparse checkout
@@ -79,7 +79,7 @@ include:
 * Good, because it also handles using .env files from the target project
 * Neutral, because some kind of custom tooling or manual process is still needed to download the referenced repository
 * Bad, because all dependencies get loaded into the same docker project
-* Bad, because it can't handle circular dependenties
+* Bad, because it can't handle circular dependencies
 
 ## More Information
 
