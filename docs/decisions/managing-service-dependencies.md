@@ -25,19 +25,32 @@ This document is specifically concerned with "internal" dependencies where share
 
 Custom tooling will be used so that we can cope with circular dependencies and to allow loading of dependencies to be performed using a single command.
 
-Each project must provide the following:
+This will be achieved as follows:
 
-* A file with the list of other services it depends on
-* a docker compose file which loads the service and any of its external dependencies (from the latest stable images by default, but configurable through environment)
-* associated list of environment variables with default values that will allow the service to start without intervention
-* an optional file (not in source control) that allows the developer to override environment defaults
-* all of the files referenced by the above must be in the root folder, to facilitate a sparse checkout
+Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into peer directories, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported.
 
-The custom tool will do the following:
+The `make run` target must function when only the root folder of the project is cloned, e.g. when using `git clone --filter=blob:none --sparse ...` and should use the latest images from GitHub (i.e. not require a local build) by default. Note that the initiating project could override the image tag used from "latest" to "dev" to use a local container.
 
-* trawl through the dependencies and, if necessary, recursively clone the needed repositories into sibling directories
-* ensure that any environment variable overrides defined on the starting project take precedence over defaults in the referenced projects
-* run `docker compose up` on each of the referenced dependencies
+If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, e.g.
+
+```make
+run:
+ifndef PROJECT1_RUNNING
+# Fetch and start dependencies
+	@export PROJECT1_RUNNING=true; \
+	for dep in "project2" "project3" ; do \
+		if [ ! -d ../$$dep ]; then \
+			git clone --filter=blob:none --sparse \
+				https://github.com/openfoodfacts/$$dep.git ../$$dep; \
+		fi; \
+		cd ../$$dep && make -e run; \
+	done
+# Start myself
+	docker compose up
+endif
+```
+
+Note that the make `ifndef` command and comments mustn't be indented.
 
 ### Consequences
 
