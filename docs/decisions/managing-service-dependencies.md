@@ -46,11 +46,13 @@ ifndef PROJECT1_RUNNING
 		cd ../$$dep && make -e run; \
 	done
 # Start myself
-	docker compose up
+	docker compose -p project1 up -d
 endif
 ```
 
 Note that the make `ifndef` command and comments mustn't be indented.
+
+Other projects may set the COMPOSE_PROJECT_NAME environment variable so it is important to use the `-p` parameter in `docker compose` to ensure that each dependency is loaded into its own a consistent project name.
 
 ### Consequences
 
