@@ -54,6 +54,13 @@ Note that the make `ifndef` command and comments mustn't be indented.
 
 Other projects may set the COMPOSE_PROJECT_NAME environment variable so it is important to use the `-p` parameter in `docker compose` to ensure that each dependency is loaded into its own a consistent project name.
 
+### TODO
+
+The following issues still need to be figured out:
+
+* Referenced dependencies may take some time to start. This may a particular issue during tests
+* Need a way to pull in dependencies in a "test" mode so that test data is set up appropriately and transient data is deleted when tests complete
+
 ### Consequences
 
 * Good, because a single command can be run to bring up a service with all of its dependencies
