@@ -36,9 +36,11 @@ The `make run` target must not require any specific software to be installed on 
 If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, e.g.
 
 ```make
-run:
+include .env
+
+# Load dependent projects
+deps:
 ifndef PROJECT1_RUNNING
-# Fetch and start dependencies
 	@export PROJECT1_RUNNING=true; \
 	for dep in "project2" "project3" ; do \
 		if [ ! -d ../$$dep ]; then \
@@ -47,9 +49,11 @@ ifndef PROJECT1_RUNNING
 		fi; \
 		cd ../$$dep && make -e run; \
 	done
-# Start myself
-	docker compose -p project1 up -d
 endif
+
+# Called from other projects to start this project
+run: deps
+	docker compose -p project1 up -d
 ```
 
 Note that the make `ifndef` command and comments mustn't be indented.
