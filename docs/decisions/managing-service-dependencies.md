@@ -4,7 +4,12 @@
 
 As we split Open Food Facts up into smaller, more manageable, services, it becomes increasingly difficult for developers to know what additional services need to be deployed in order for the service they are working on to function correctly. This becomes increasingly difficult if the referenced service itself has other dependencies.
 
-Note that for development and testing purposes it is recommended that any dependencies are mocked or managed using tools like testcontainers, rather than relying on a separate service being up. This document concerns itself more with creating a workable end-to-end deployment that can be used for ad-hoc, interactive testing and discovery.
+The following terminology is used for the different types of activity a local user might wish to perform:
+
+* Development: This incldues writing code and running automated tests
+* Running: To see the service running and interacting with other services as close as possible to how it is deployed in production
+
+For Development and testing purposes it is recommended that any dependencies are mocked or managed using tools like testcontainers, rather than relying on a separate service being up. This document concerns itself more with Running the project, i.e. creating a workable end-to-end deployment that can be used for ad-hoc, interactive testing and discovery.
 
 This document is specifically concerned with "internal" dependencies where shared state is needed, e.g. each service can have its own independent database rather than relying on a shared database service, but the messaging system (Redis) needs to be shared in order for messages to pass between services. Dependencies on services outside the scope of Open Food Facts are referred to as "external" dependencies.
 
@@ -27,38 +32,58 @@ Custom tooling will be used so that we can cope with circular dependencies and t
 
 ### Consequences
 
-Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into peer directories, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported.
+Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into a `DEPS_DIR` directory, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported. It is suggested that the `DEPS_DIR` is defaulted to a `deps` subfolder under the project that initiated the run, but it could also be set to the parent of the current project so that all projects are cloned on a peer level.
 
 The `make run` target must function when only the root folder of the project is cloned, e.g. when using `git clone --filter=blob:none --sparse ...` and should use the latest images from GitHub (i.e. not require a local build) by default. Note that the initiating project could override the image tag used from "latest" to "dev" to use a local container.
 
 The `make run` target must not require any specific software to be installed on the host, other than docker, and any operating system commands can assume a bash shell (Windows users are recommended to use the Git Bash shell to run make commands).
 
-If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, e.g.
+If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, such as the `PROJECT1_RUNNING` variable in the example below.
 
 ```make
 include .env
 
-# Load dependent projects
-deps:
-ifndef PROJECT1_RUNNING
-	@export PROJECT1_RUNNING=true; \
-	for dep in "project2" "project3" ; do \
-		if [ ! -d ../$$dep ]; then \
-			git clone --filter=blob:none --sparse \
-				https://github.com/openfoodfacts/$$dep.git ../$$dep; \
-		fi; \
-		cd ../$$dep && make -e run; \
-	done
+# Set the DEPS_DIR if it hasn't been set already
+ifndef DEPS_DIR
+	DEPS_DIR=${PWD}/deps
 endif
 
+# Space delimited list of dependant projects
+DEPS=project2 project3
+
+# Clone dependent projects
+clone_deps:
+	@mkdir -p ${DEPS_DIR}; \
+	for dep in ${DEPS} ; do \
+		echo $$dep; \
+		if [ ! -d ${DEPS_DIR}/$$dep ]; then \
+			git clone --filter=blob:none --sparse \
+				https://github.com/openfoodfacts/$$dep.git ${DEPS_DIR}/$$dep; \
+		else \
+			cd ${DEPS_DIR}/$$dep && git pull; \
+		fi; \
+	done
+
+# Run dependent projects
+run_deps: clone_deps
+	@for dep in ${DEPS} ; do \
+		cd ${DEPS_DIR}/$$dep && make -e run; \
+	done
+
 # Called from other projects to start this project
-run: deps
-	docker compose -p project1 up -d
+run:
+ifndef PROJECT1_RUNNING
+	@export PROJECT1_RUNNING=true; \
+	$(MAKE) run_deps; \
+	docker compose -p project1 -f docker-compose.yml up -d
+endif
 ```
+
+In this example the `clone_deps` and `run_deps` targets and the code that default the `DEPS_DIR` are reusable. The `run` target and `DEPS` list will be unique to each project.
 
 Note that the make `ifndef` command and comments mustn't be indented.
 
-Other projects may set the COMPOSE_PROJECT_NAME environment variable so it is important to use the `-p` parameter in `docker compose` to ensure that each dependency is loaded into its own a consistent project name.
+Other projects may set the COMPOSE_PROJECT_NAME and COMPOSE_FILE environment variables so it is important to use the `-p` and `-f` parameters in `docker compose` to ensure that each dependency is loaded into its own a consistent project name.
 
 If a developer also wants to work on a referenced service they can easily convert it into a full clone using `git sparse-checkout disable`. Note that the `blob:none` filter is still applied but this should not present too many complications.
 
