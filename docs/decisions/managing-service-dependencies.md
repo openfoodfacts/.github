@@ -50,15 +50,13 @@ ifndef DEPS_DIR
 	DEPS_DIR=${PWD}/deps
 endif
 
+export
+
 # Space delimited list of dependant projects
 DEPS=project2 project3
 
-# Docker variables for this project
-PROJECT1_PROJECT_NAME=project1
-PROJECT1_COMPOSE_FILE=docker-compose.yml;docker-compose-run.yml
-
 # Use override here to ensure this is not inherited from the environment
-override DOCKER_COMPOSE=COMPOSE_PROJECT_NAME=${PROJECT1_PROJECT_NAME} COMPOSE_FILE=${PROJECT1_COMPOSE_FILE} docker compose
+override DOCKER_COMPOSE=COMPOSE_PROJECT_NAME=${PROJECT1_PROJECT_NAME} COMPOSE_FILE="${PROJECT1_COMPOSE_FILE}" docker compose
 
 # Clone dependent projects
 clone_deps:
@@ -105,6 +103,10 @@ If a project supports devcontainers then dependencies should be resolved before 
 ```
 
 As noted before, starting dependencies should only require docker, git and a bash shell, so running this command on the host should not undermine the benefit of using devcontainers.
+
+#### Networks
+
+Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set in the `COMMON_NET_NAME` environment variable.
 
 #### Testing
 
