@@ -6,10 +6,12 @@ As we split Open Food Facts up into smaller, more manageable, services, it becom
 
 The following terminology is used for the different types of activity a local user might wish to perform:
 
-* Development: This incldues writing code and running automated tests
+* Development: This includes writing code and running automated tests
 * Running: To see the service running and interacting with other services as close as possible to how it is deployed in production
 
-For Development and testing purposes it is recommended that any dependencies are mocked or managed using tools like testcontainers, rather than relying on a separate service being up. This document concerns itself more with Running the project, i.e. creating a workable end-to-end deployment that can be used for ad-hoc, interactive testing and discovery.
+For Development and testing purposes it is recommended that any non essential dependencies[^non_essential] are mocked or managed using tools like testcontainers, rather than relying on a separate service being up. This document concerns itself more with Running the project, i.e. creating a workable end-to-end deployment that can be used for ad-hoc, interactive testing and discovery.
+
+[^non_essential]: It's up to project leaders to draw the line. A primary or secondary database is essential, while an OCR service might not be. 
 
 This document is specifically concerned with "internal" dependencies where shared state is needed, e.g. each service can have its own independent database rather than relying on a shared database service, but the messaging system (Redis) needs to be shared in order for messages to pass between services. Dependencies on services outside the scope of Open Food Facts are referred to as "external" dependencies.
 
@@ -51,6 +53,13 @@ endif
 # Space delimited list of dependant projects
 DEPS=project2 project3
 
+# Docker variables for this project
+PROJECT1_PROJECT_NAME=project1
+PROJECT1_COMPOSE_FILE=docker-compose.yml;docker-compose-run.yml
+
+# Use override here to ensure this is not inherited from the environment
+override DOCKER_COMPOSE=COMPOSE_PROJECT_NAME=${PROJECT1_PROJECT_NAME} COMPOSE_FILE=${PROJECT1_COMPOSE_FILE} docker compose
+
 # Clone dependent projects
 clone_deps:
 	@mkdir -p ${DEPS_DIR}; \
@@ -75,7 +84,7 @@ run:
 ifndef PROJECT1_RUNNING
 	@export PROJECT1_RUNNING=true; \
 	$(MAKE) run_deps; \
-	docker compose -p project1 -f docker-compose.yml up -d
+	${DOCKER_COMPOSE} up -d
 endif
 ```
 
@@ -83,9 +92,19 @@ In this example the `clone_deps` and `run_deps` targets and the code that defaul
 
 Note that the make `ifndef` command and comments mustn't be indented.
 
-Other projects may set the COMPOSE_PROJECT_NAME and COMPOSE_FILE environment variables so it is important to use the `-p` and `-f` parameters in `docker compose` to ensure that each dependency is loaded into its own a consistent project name.
+Other projects may set the `COMPOSE_PROJECT_NAME` and `COMPOSE_FILE` environment variables so it is recommended that each project defines its own variables for these, e.g. `PROJECT1_PROJECT_NAME` and `PROJECT1_COMPOSE_FILE`, and explicitly references these when using `docker compose` to ensure that each dependency is loaded into its own project name.
 
-If a developer also wants to work on a referenced service they can easily convert it into a full clone using `git sparse-checkout disable`. Note that the `blob:none` filter is still applied but this should not present too many complications.
+If a developer also wants to work on a referenced service they can easily convert the sparsely cloned repo into a full clone using `git sparse-checkout disable`. Note that the `blob:none` filter is still applied but this should not present too many complications.
+
+#### Devcontainers
+
+If a project supports devcontainers then dependencies should be resolved before running the devcontainer. This can be achieved by adding an `initializeCommand` to the `devcontainers.json` file, e.g.:
+
+```
+  "initializeCommand": "make run_deps",
+```
+
+As noted before, starting dependencies should only require docker, git and a bash shell, so running this command on the host should not undermine the benefit of using devcontainers.
 
 #### Testing
 
@@ -134,7 +153,3 @@ An agreed convention would be used for cloning dependencies and running a specif
 * Neutral, because cloning referenced projects may take time.
 * Neutral, environment variables need to be unique across projects to avoid conflicts (unless they refer to the same thing), e.g. database username and password variables would need to be prefixed with the owning service name, whereas the REDIS_URL could be shared
 * Bad, because this will be something else that developers need to learn about when joining the team
-
-## More Information
-
-TBA
