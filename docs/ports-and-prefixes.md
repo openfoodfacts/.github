@@ -1,6 +1,6 @@
 # Service Port Allocations
 
-During local development it is often necessary to have multiple services running at the same time. To make this easier to manage we encourage each service to stick to a specific range of port numbers to avoid clashes.
+During local development it is often necessary to have multiple services running at the same time. To make this easier to manage we encourage each service to stick to a specific range of port numbers when exposing services outside of docker, to avoid clashes.
 
 Please raise a PR to update this document if you are introducing a new service into the project.
 
@@ -12,7 +12,7 @@ When running multiple services together it is sometimes necessary to override a 
 
 Port ranges are allocated in blocks of 10.
 
-Prefixes should be followed by and underscore and then the specific variable name.
+Prefixes should be followed by an underscore and then the specific variable name.
 
 You do not need to track the individual ports and environment variables that you use here, please do that in the documentation for the specific project repo.
 
