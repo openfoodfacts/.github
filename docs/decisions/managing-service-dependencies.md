@@ -112,6 +112,8 @@ Any services that need to be able to communicate with other services from other 
 
 ![Network example](managing-service-dependencies-networks.png)
 
+[source of the diagram](https://docs.google.com/presentation/d/1N6pgEFQ7s9kAeN8Y53GHBBjADdxA1BqTghEAFgY6CsY/edit#slide=id.g211e97e0566_0_0)
+
 #### Testing
 
 In most cases tests should not rely on external dependencies and these should be mocked where appropriate. However, if an external dependency is essential for specific integration or end-to-end tests then the above described mechanism should _not_ be used and it is the originating project's responsibility to pull in the required dependencies and also take care of any further chained dependencies.
