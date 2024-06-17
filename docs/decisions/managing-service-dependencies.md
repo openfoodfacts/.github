@@ -34,7 +34,9 @@ Custom tooling will be used so that we can cope with circular dependencies and t
 
 ### Consequences
 
-Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into a `DEPS_DIR` directory, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported. It is suggested that the `DEPS_DIR` is defaulted to a `deps` subfolder under the project that initiated the run, but it could also be set to the parent of the current project so that all projects are cloned on a peer level.
+Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into a `DEPS_DIR` directory, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported.
+
+It is suggested that the `DEPS_DIR` is defaulted to a `deps` subfolder under the project that initiated the run, but contributors to multiple projects may want to consider setting it to the parent of the current project so that all projects are cloned on a peer level.
 
 The `make run` target must function when only the root folder of the project is cloned, e.g. when using `git clone --filter=blob:none --sparse ...` and should use the latest images from GitHub (i.e. not require a local build) by default. Note that the initiating project could override the image tag used from "latest" to "dev" to use a local container.
 
@@ -45,12 +47,12 @@ If a project anticipates that it could be part of a circular reference then it s
 ```make
 include .env
 
+export
+
 # Set the DEPS_DIR if it hasn't been set already
 ifndef DEPS_DIR
-	DEPS_DIR=${PWD}/deps
+	export DEPS_DIR=${PWD}/deps
 endif
-
-export
 
 # Space delimited list of dependant projects
 DEPS=project2 project3
@@ -106,7 +108,9 @@ As noted before, starting dependencies should only require docker, git and a bas
 
 #### Networks
 
-Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set in the `COMMON_NET_NAME` environment variable.
+Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set in the `COMMON_NET_NAME` environment variable. For example:
+
+![Network example](managing-service-dependencies-networks.png)
 
 #### Testing
 
