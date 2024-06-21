@@ -106,7 +106,7 @@ As noted before, starting dependencies should only require docker, git and a bas
 
 #### Networks
 
-Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set using the `COMMON_NET_NAME` environment variable. For local development this is currently set to `po_off_default`, but this may soon be changed. The following diagram shows an example of services that use the common network:
+Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set using the `COMMON_NET_NAME` environment variable. For local development this is currently set to `off_shared_network`. The following diagram shows an example of services that use the common network:
 
 ![Network example](managing-service-dependencies-networks.png)
 
