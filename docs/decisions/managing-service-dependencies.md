@@ -34,7 +34,7 @@ Custom tooling will be used so that we can cope with circular dependencies and t
 
 ### Consequences
 
-Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into a `DEPS_DIR` directory, change into each of the directories and execute `make -e run`. Note it is important to make each directory the working directory when running to ensure that local `.env` files are imported.
+Each project will have a makefile in its root folder with a target named "run". This target will fetch any missing dependencies from GitHub into a `DEPS_DIR` directory, change into each of the directories and execute `make run`. Note it is important to make each directory the working directory when running to ensure that local `.env` and `.envrc` files are imported.
 
 It is suggested that the `DEPS_DIR` is defaulted to a `deps` subfolder under the project that initiated the run, but contributors to multiple projects may want to consider setting it to the parent of the current project so that all projects are cloned on a peer level.
 
@@ -46,19 +46,17 @@ If a project anticipates that it could be part of a circular reference then it s
 
 ```make
 include .env
+-include .envrc
 
 export
 
 # Set the DEPS_DIR if it hasn't been set already
-ifndef DEPS_DIR
+ifeq (${DEPS_DIR},)
 	export DEPS_DIR=${PWD}/deps
 endif
 
 # Space delimited list of dependant projects
 DEPS=project2 project3
-
-# Use override here to ensure this is not inherited from the environment
-override DOCKER_COMPOSE=COMPOSE_PROJECT_NAME=${PROJECT1_PROJECT_NAME} COMPOSE_FILE="${PROJECT1_COMPOSE_FILE}" docker compose
 
 # Clone dependent projects
 clone_deps:
@@ -76,15 +74,15 @@ clone_deps:
 # Run dependent projects
 run_deps: clone_deps
 	@for dep in ${DEPS} ; do \
-		cd ${DEPS_DIR}/$$dep && make -e run; \
+		cd ${DEPS_DIR}/$$dep && make run; \
 	done
 
 # Called from other projects to start this project
 run:
-ifndef PROJECT1_RUNNING
+ifeq (${PROJECT1_RUNNING},)
 	@export PROJECT1_RUNNING=true; \
 	$(MAKE) run_deps; \
-	${DOCKER_COMPOSE} up -d
+	docker compose up -d
 endif
 ```
 
@@ -92,7 +90,7 @@ In this example the `clone_deps` and `run_deps` targets and the code that defaul
 
 Note that the make `ifndef` command and comments mustn't be indented.
 
-Other projects may set the `COMPOSE_PROJECT_NAME` and `COMPOSE_FILE` environment variables so it is recommended that each project defines its own variables for these, e.g. `PROJECT1_PROJECT_NAME` and `PROJECT1_COMPOSE_FILE`, and explicitly references these when using `docker compose` to ensure that each dependency is loaded into its own project name.
+It is important that `make -e` is not used as other projects may set the `COMPOSE_PROJECT_NAME` and `COMPOSE_FILE` environment variables which would override the local project's `.env` settings.
 
 If a developer also wants to work on a referenced service they can easily convert the sparsely cloned repo into a full clone using `git sparse-checkout disable`. Note that the `blob:none` filter is still applied but this should not present too many complications.
 
@@ -108,7 +106,7 @@ As noted before, starting dependencies should only require docker, git and a bas
 
 #### Networks
 
-Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set in the `COMMON_NET_NAME` environment variable. For example:
+Any services that need to be able to communicate with other services from other projects should be joined to a common, external docker network. The name of this network should be set using the `COMMON_NET_NAME` environment variable. For local development this is currently set to `po_off_default`, but this may soon be changed. The following diagram shows an example of services that use the common network:
 
 ![Network example](managing-service-dependencies-networks.png)
 
@@ -119,6 +117,10 @@ Any services that need to be able to communicate with other services from other 
 In most cases tests should not rely on external dependencies and these should be mocked where appropriate. However, if an external dependency is essential for specific integration or end-to-end tests then the above described mechanism should _not_ be used and it is the originating project's responsibility to pull in the required dependencies and also take care of any further chained dependencies.
 
 This could be achieved by adding a specific docker compose configuration invoked during tests to pull in additional dependencies, or by using a suitable [testcontainers](https://testcontainers.com/) implementation.
+
+#### Deployment
+
+Please ensure that project deployment actions do _not_ deploy dependencies.
 
 ### Confirmation
 
