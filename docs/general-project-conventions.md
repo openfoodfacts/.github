@@ -8,7 +8,7 @@ Projects should obtain all of their runtime setting from environment variables.
 
 Every OFF repo has a `.env` file that contains the settings needed by the application to run properly. The `.env` file is loaded by the `docker compose` commands.
 
-The default `.env` file in the repo is ready for local deployment from the latest GitHub images, and should rarely be modified.
+The default `.env` file in the repo is ready for local development and should rarely be modified.
 
 In pre-production and production, the `.env` file is populated by the GitHub action (using GitHub environment secrets) before deploying to the target environment.
 
@@ -65,9 +65,9 @@ It is recommended that no external ports are mapped from these containers and no
 
 ### Local Runtime
 
-This layer builds on the above to create a full local deployment of the service that would mirror a production deployment as much as possible. This layer would typically be used by the `make up` and `make run` targets.
+This layer builds on the above to create a full local deployment of the service that would mirror a production deployment as much as possible. This layer would typically be used by the `make run` target.
 
-Environment settings will come from the `.env` and `.envrc` files.
+Environment settings will come from the `.env` and `.envrc` files. Note that `make run` will not typically use the default `COMPOSE_FILE` and image tag values from the `.env` file as the latter would normally include the Local Development layer (see below).
 
 Services that need to communicate with services in other projects should join the `COMMON_NET_NAME` network. External ports may also be mapped if needed.
 
@@ -76,14 +76,6 @@ This layer should not depend on any files outside of the root directory of the r
 ### Local Development
 
 This layer builds on the above by adding the necessary build commands to the docker compose services. This layer would typically be used by the `make build` target.
-
-**Warnings:**
-
-`make build` will need to explicitly extend the `COMPOSE_FILE` to include the necessary development docker compose overrides before calling `docker compose up --build`. However, `make up` or just `docker compose up` from the command line will not use these overrides. Hence, if we want `make up` to use the locally built image then `make build` should use the same image tag as the other targets, rather than using a `dev` tag.
-
-This may cause confusion if a developer has a local build of a service that then gets pulled in when they run another service, although in practice if a developer is working on multiple repos they might expect this behavior.
-
-Another complication is with Product Opener where `make dev` builds containers that use local volume mounts to link in the source code. _Not sure how to address this_.
 
 ### Production Deployment
 
