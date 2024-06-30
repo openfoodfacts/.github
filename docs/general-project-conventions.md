@@ -67,7 +67,7 @@ It is recommended that no external ports are mapped from these containers and no
 
 This layer builds on the above to create a full local deployment of the service that would mirror a production deployment as much as possible. This layer would typically be used by the `make run` target.
 
-Environment settings will come from the `.env` and `.envrc` files. Note that `make run` will not typically use the default `COMPOSE_FILE` and image tag values from the `.env` file as the latter would normally include the Local Development layer (see below).
+Environment settings will come from the `.env` and `.envrc` files. Note that `make run` will not typically use the default `COMPOSE_FILE` from the `.env` file as this would include the Local Development layer (see below). The convention is to use a `COMPOSE_FILE_RUN` variable to set a `COMPOSE_FILE` value that excludes the Local Development layer. A developer can override this if they want a dependency to use a local build.
 
 Services that need to communicate with services in other projects should join the `COMMON_NET_NAME` network. External ports may also be mapped if needed.
 

@@ -38,7 +38,7 @@ Each project will have a makefile in its root folder with a target named "run". 
 
 It is suggested that the `DEPS_DIR` is defaulted to a `deps` subfolder under the project that initiated the run, but contributors to multiple projects may want to consider setting it to the parent of the current project so that all projects are cloned on a peer level.
 
-The `make run` target must function when only the root folder of the project is cloned, e.g. when using `git clone --filter=blob:none --sparse ...` and should use the latest images from GitHub (i.e. not require a local build) by default. Note that the initiating project could override the image tag used from "latest" to "dev" to use a local container.
+The `make run` target must function when only the root folder of the project is cloned, e.g. when using `git clone --filter=blob:none --sparse ...` and should use the latest images from GitHub (i.e. not require a local build) by default. It should be possible to use `.envrc` to override the image tag so that a local build image is used.
 
 The `make run` target must not require any specific software to be installed on the host, other than docker, and any operating system commands can assume a bash shell (Windows users are recommended to use the Git Bash shell to run make commands).
 
@@ -82,11 +82,13 @@ run:
 ifeq (${PROJECT1_RUNNING},)
 	@export PROJECT1_RUNNING=true; \
 	$(MAKE) run_deps; \
-	docker compose up -d
+	COMPOSE_FILE=${COMPOSE_FILE_RUN} docker compose up -d
 endif
 ```
 
 In this example the `clone_deps` and `run_deps` targets and the code that default the `DEPS_DIR` are reusable. The `run` target and `DEPS` list will be unique to each project.
+
+You may notice that the `run` target overrides the `COMPOSE_FILE` value. This is because the default `.env` settings will support building and running a local image, but for `make run` we want to use a pre-built image.
 
 Note that the make `ifndef` command and comments mustn't be indented.
 
