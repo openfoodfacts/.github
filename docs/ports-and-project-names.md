@@ -16,7 +16,7 @@ You do not need to track the individual ports that you use here, please do that 
 
 | Port Range | Project Name | Repo |
 |---|---|---|
-| 27017 | off_shared | https://github.com/openfoodfacts/openfoodfacts-shared-services |
+| 6379, 27017 | off_shared | https://github.com/openfoodfacts/openfoodfacts-shared-services |
 | 80 | po_off | https://github.com/openfoodfacts/openfoodfacts-server |
 | 5500-5509 | robotoff | https://github.com/openfoodfacts/robotoff |
 | 5510-5519 | off-query | https://github.com/openfoodfacts/openfoodfacts-query |
