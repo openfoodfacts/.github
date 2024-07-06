@@ -21,7 +21,9 @@ Whichever default we choose will then determine the `COMPOSE_FILE` settings for 
 
 ## Decision Outcome
 
-Chosen option: "Default to Development Mode", because it reflects the current model and is a more natural fit for most scenarios.
+Chosen option: "Default environment variables should support Development Mode", because it reflects the current model and is a more natural fit for most scenarios.
+
+Note that core docker compose files should be as close as possible to production with run, development and production overrides layered on top of these. This is discussed in more detail in the [General Project Conventions](../general-project-conventions.md).
 
 ### Consequences
 
