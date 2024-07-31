@@ -154,7 +154,7 @@ Here are the main development projects, under active development:
 
 ### Data quality tools
 * [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS) ([What can I work on ?](https://github.com/openfoodfacts/power-user-script/issues/64))
-* Nutri-Patrol ([frontend](https://github.com/openfoodfacts/nutripatrol-frontend) - [backend](https://github.com/openfoodfacts/nutripatrol)) ([What can I work on ?](https://github.com/openfoodfacts/nutripatrol/issues/XXX))
+* Nutri-Patrol ([frontend](https://github.com/openfoodfacts/nutripatrol-frontend) - [backend](https://github.com/openfoodfacts/nutripatrol)) ([What can I work on (backend) ?](https://github.com/openfoodfacts/nutripatrol/issues/24)) - ([What can I work on (frontend) ?](https://github.com/openfoodfacts/nutripatrol-frontend/issues/71))
 
 ### Language SDKs
 * Consolidated issue management for all SDKs: https://github.com/orgs/openfoodfacts/projects/26/views/1
