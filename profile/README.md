@@ -132,8 +132,8 @@ Here are the main development projects, under active development:
 * [Search using Elastic](https://github.com/openfoodfacts/openfoodfacts-search) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-search/issues/1))
 
 ### Prices
-* [Open Prices](https://github.com/openfoodfacts/open-prices) ([What can I work on ?](https://github.com/openfoodfacts/open-prices/issues/39))
-
+* [Open Prices backend](https://github.com/openfoodfacts/open-prices) ([What can I work on ?](https://github.com/openfoodfacts/open-prices/issues/39))
+* [Open Prices frontend](https://github.com/openfoodfacts/open-prices-frontend) ([What can I work on ?](https://github.com/openfoodfacts/open-prices-frontend/issues/220))
 ### Mobile
 * [New official app (Android/iPhone) in Flutter - Codename Smoothie](https://github.com/openfoodfacts/smooth-app) (Cross platform: Dart/Flutter) ([What can I work on ?](https://github.com/openfoodfacts/smooth-app/issues/525)) ([Smoothie project management](https://github.com/orgs/openfoodfacts/projects/7)
 * [Classic app - Android](https://github.com/openfoodfacts/openfoodfacts-androidapp) (Kotlin) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4169)) ([Classic app - Android project management](https://github.com/orgs/openfoodfacts/projects/22)
@@ -147,11 +147,14 @@ Here are the main development projects, under active development:
 * [Robotoff](https://github.com/openfoodfacts/robotoff) (Python, Dockerized) ([What can I work on ?](https://github.com/openfoodfacts/robotoff/issues/374))
 * [Open Food Facts AI - research](https://github.com/openfoodfacts/openfoodfacts-ai) (Python, mostly) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-ai/issues/76))
 * [Robotoff - AI fulfillment](https://github.com/openfoodfacts/robotoff) (Python) ([What can I work on ?](https://github.com/openfoodfacts/robotoff/issues/374))
+* 
 ### Tools and Gamification
 * [Hunger Games](https://github.com/openfoodfacts/hunger-games) (React) ([What can I work on ?](https://github.com/openfoodfacts/hunger-games/issues/37)) ([Hunger Games project management](https://github.com/orgs/openfoodfacts/projects/40))
 * [DriveOFF - Chrome and Firefox extension for e-commerce](https://github.com/openfoodfacts/DriveOFF) (Pure JS) ([What can I work on ?](https://github.com/openfoodfacts/DriveOFF/issues/4))
-* [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS) ([What can I work on ?](https://github.com/openfoodfacts/power-user-script/issues/64))
 
+### Data quality tools
+* [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS) ([What can I work on ?](https://github.com/openfoodfacts/power-user-script/issues/64))
+* Nutri-Patrol ([frontend](https://github.com/openfoodfacts/nutripatrol-frontend) - [backend](https://github.com/openfoodfacts/nutripatrol)) ([What can I work on (backend) ?](https://github.com/openfoodfacts/nutripatrol/issues/24)) - ([What can I work on (frontend) ?](https://github.com/openfoodfacts/nutripatrol-frontend/issues/71))
 
 ### Language SDKs
 * Consolidated issue management for all SDKs: https://github.com/orgs/openfoodfacts/projects/26/views/1
