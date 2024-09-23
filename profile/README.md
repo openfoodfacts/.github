@@ -4,6 +4,9 @@
   <img height="48" src="https://static.openfoodfacts.org/images/logos/off-logo-horizontal-light.svg">
 </picture>
 
+<img width="963" alt="image" src="https://github.com/user-attachments/assets/57bcc41c-78ea-47ec-aa15-3784f1c48210">
+
+
 # Open Food Facts
 
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
