@@ -11,7 +11,7 @@ TLS provides two levels of protection:
 
 This stops malicious actors from monitoring unencrypted communication and prevents "man in the middle" attacks, where a rogue system impersonates the intended server / client.
 
-However, this kind of deployment can be complicated and generally requires some kind of Service Mesh when deployed in a Kubernetes cluster. However, we might want to consider using TLS internally when communicating with servers containing sensitive information, such as Keycloak and its associated PostgreSQL database.
+However, this kind of deployment can be complicated and generally requires some kind of Service Mesh when deployed in a Kubernetes cluster. Despite this, we might want to consider using TLS internally when communicating with servers containing sensitive information, such as Keycloak and its associated PostgreSQL database.
 
 ## Decision Drivers
 
@@ -27,27 +27,24 @@ However, this kind of deployment can be complicated and generally requires some 
 
 ## Decision Outcome
 
-Chosen option: "{title of option 1}", because
-{justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
+The current decision is to continue to use unsecured communication internally as we have a high level of trust in our current data centres and so the additional complexity of securing communication between individual services can't be justified.
+
+If a bad actor were to gain access to any of the current containers then they would potentially be able to access certificate keys and other secrets directly anyway.
 
 ### Consequences
 
-{Provide detail on the implications of making this decision and how any forseen problems can be mitigated}
+Services can assume that TLS is not needed for internal communication and that network security will be handled by the infrastructure where needed.
 
-### Confirmation
-
-{Describe how the implementation of/compliance with the ADR is confirmed. E.g., by a review or an ArchUnit test.
- Although we classify this element as optional, it is included in most ADRs.}
-
-<!-- This is an optional element. Feel free to remove. -->
 ## Pros and Cons of the Options
 
 ### Use unsecured communication internally
 
-This matches the current model, where unsecured communication is used internally, with TLS terminated at then nginx reverse proxy. Communication between networks is carried out over SSH tunnels.
+This matches the current model, where unsecured communication is used internally, with TLS terminated at then nginx reverse proxy. Communication between networks is carried out over SSH tunnels. If we are using a data centre that is not fully trusted then SSH tunnels should also be used for communication between hosts.
 
 * Good: Matches current deployment model
 * Good: No need to use TLS during development
+* Good: Communication between data centres is encrypted and cannot be monitored
+* Good: Can do full request logging at the reverse proxy
 * Bad: The authenticity of the intended recipient is not guaranteed, allowing "man in the middle" attacks if the infrastructure has been compromised
 * Bad: Internal communication is not encrypted so can be monitored if a bad actor gets network access
 
