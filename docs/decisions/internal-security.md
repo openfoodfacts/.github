@@ -11,7 +11,7 @@ TLS provides two levels of protection:
 
 This stops malicious actors from monitoring unencrypted communication and prevents "man in the middle" attacks, where a rogue system impersonates the intended server / client.
 
-However, this kind of deployment can be complicated and generally requires some kind of Service Mesh when deployed in a Kubernetes cluster. However, we might want to consider using TLS internally when communicating with servers containing sensitive information, such as Keycloak.
+However, this kind of deployment can be complicated and generally requires some kind of Service Mesh when deployed in a Kubernetes cluster. However, we might want to consider using TLS internally when communicating with servers containing sensitive information, such as Keycloak and its associated PostgreSQL database.
 
 ## Decision Drivers
 
@@ -68,8 +68,9 @@ In this case we would use the public certificates for sensitive services for int
 * Good: Prevents basic "man in the middle" and network monitoring
 * Good: Reverse proxy can operate in pass through mode avoiding re-encryption
 * Good: Private keys for public certificates only need to be deployed to target service
+* Good: No need to install our CA certificate on all clients
 * Bad: Not possible to log request information on the reverse proxy
 * Bad: Need to implement mechanisms to renew certificates on each service
 * Bad: Requires developers to use TLS internal for accurate integration testing
-* Bad: Not suitable for services that do not need to be exposed externally
+* Bad: We would still need an internal PKI to issue certificates for services that do not need to be exposed externally, such as the Keycloak PostgreSQL database
 
