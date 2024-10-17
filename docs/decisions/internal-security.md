@@ -71,3 +71,14 @@ In this case we would use the public certificates for sensitive services for int
 * Bad: Requires developers to use TLS internal for accurate integration testing
 * Bad: We would still need an internal PKI to issue certificates for services that do not need to be exposed externally, such as the Keycloak PostgreSQL database
 
+### Use SSL without certificates
+
+In this case we would use SSL for encrypted communication but without validating the server certificates themselves.
+
+* Good: Prevents network monitoring
+* Good: No need to install our CA certificate on all clients
+* Good: Can do full request logging at the reverse proxy
+* Bad: All HTTPS calls would need to be configured to ignore certificate issues
+* Bad: Traffic would need to be re-encrypted at the reverse proxy, adding some latency
+* Bad: Does not prevent "man in the middle" attacks
+
