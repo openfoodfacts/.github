@@ -113,17 +113,17 @@ Here are the main development projects, under active development:
   
 - Other currently important projects:
 
-  - [Open Food Facts Events](https://github.com/openfoodfacts/openfoodfacts-events) could be the bare bone of Gamification, user dashboard, data moderation, but needs help to fix some bug and extend it
+  - [Open Food Facts Events](https://github.com/openfoodfacts/openfoodfacts-events) could be the bare bone of gamification, user dashboard, data moderation, but needs help to fix some bug and extend it
   - [Folksonomy engine](https://github.com/openfoodfacts/folksonomy_api) can help extend annotations with free attributes. Bug fixes are needed as well as some extensions
 
 ### 🎨 Design
-* [Design team](https://github.com/openfoodfacts/openfoodfacts-design) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-design/issues/3)) ([UXR & Design project management accross Open Food Facts](https://github.com/orgs/openfoodfacts/projects/11)
+* [Design team](https://github.com/openfoodfacts/openfoodfacts-design) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-design/issues/3)) ([UXR & Design project management accross Open Food Facts](https://github.com/orgs/openfoodfacts/projects/11))
 
 ### 🥫 Server
 * [Server](https://github.com/openfoodfacts/openfoodfacts-server) (Perl, HTML, CSS, Dockerized) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)) ([Server-side project management](https://github.com/orgs/openfoodfacts/projects/12))
 * [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web) (HTML/CSS) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-web/issues/206))
 
-### 🔖 Folksonomy Engine
+### 🔖 Folksonomy Engine - K/V system to describe products in a flexible way - Especially useful for Open Products Facts.
 * [Folksonomy Engine cross platform project management](https://github.com/orgs/openfoodfacts/projects/5)
 * [Folksonomy Engine](https://github.com/openfoodfacts/folksonomy_api) (Python/FastAPI) ([Server](https://github.com/openfoodfacts/folksonomy_api) ([What can I work on ?](https://github.com/openfoodfacts/folksonomy_api/issues/70))
 * [Demo app](https://github.com/openfoodfacts/folksonomy_mobile_experiment) ([What can I work on ?](https://github.com/openfoodfacts/folksonomy_mobile_experiment/issues/7))
@@ -171,29 +171,36 @@ Here are the main development projects, under active development:
 [Python](https://github.com/openfoodfacts/openfoodfacts-python) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-python/issues/76)) - [Minimal Python Server](https://github.com/openfoodfacts/openfoodfacts-apirestpython) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-apirestpython/issues/76)) - 
 
 #### ☕️ Java
-[Java](https://github.com/openfoodfacts/openfoodfacts-java) ([and its demo](https://github.com/openfoodfacts/openfoodfacts-java-demo)) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-java/issues/3)) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-java-demo/issues/2)) 
+[Java](https://github.com/openfoodfacts/openfoodfacts-java) ([and its demo](https://github.com/openfoodfacts/openfoodfacts-java-demo)) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-java/issues/3)) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-java-demo/issues/2))
+
 #### Go 
-[Go](https://github.com/openfoodfacts/openfoodfacts-go) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-go/issues/44)) 
+[Go](https://github.com/openfoodfacts/openfoodfacts-go) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-go/issues/44))
 
 #### 🦀 Rust
-[RUST](https://github.com/openfoodfacts/openfoodfacts-rust) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-rust/issues/8)) 
+[RUST](https://github.com/openfoodfacts/openfoodfacts-rust) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-rust/issues/8))
 
 #### JavaScript
 - [NodeJS](https://github.com/openfoodfacts/openfoodfacts-nodejs) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-nodejs/issues/182))
-- [React Native](https://github.com/openfoodfacts/openfoodfacts-react-native) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-react-native/issues/3))
+- [React Native code snippet](https://github.com/openfoodfacts/openfoodfacts-react-native) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-react-native/issues/3))
+
 #### 🐘 PHP
-- - [PHP](https://github.com/openfoodfacts/openfoodfacts-php) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-php/issues/39)) - [Laravel](https://github.com/openfoodfacts/openfoodfacts-laravel) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-laravel/issues/12))
+- [PHP](https://github.com/openfoodfacts/openfoodfacts-php) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-php/issues/39)) - [Laravel](https://github.com/openfoodfacts/openfoodfacts-laravel) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-laravel/issues/12))
+
 #### Flutter/Dart
 - [Dart](https://github.com/openfoodfacts/openfoodfacts-dart) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-dart/issues/218))
 
 #### R
 - [R](https://github.com/openfoodfacts/r-dashboard) ([What can I work on ?](https://github.com/openfoodfacts/r-dashboard/issues/2))
+
 #### Ruby
 - [Ruby](https://github.com/openfoodfacts/openfoodfacts-ruby) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-ruby/issues/76)) - [Ruby (OBF)](https://github.com/openfoodfacts/openbeautyfacts-ruby) ([What can I work on ?](https://github.com/openfoodfacts/openbeautyfacts-ruby/issues/46))
+
 #### Elixir
-- [Elixir](https://github.com/openfoodfacts/openfoodfacts-elixir)  ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-elixir/issues/9)) 
+- [Elixir](https://github.com/openfoodfacts/openfoodfacts-elixir)  ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-elixir/issues/9))
+
 #### Kotlin
 - [Kotlin](https://github.com/openfoodfacts/openfoodfacts-kotlin) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-kotlin/issues/1))
+
 #### Swift/iOS
 - [Swift](https://github.com/openfoodfacts/openfoodfacts-swift) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-swift/issues/1))
 
