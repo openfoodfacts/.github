@@ -55,17 +55,17 @@ export
 
 Projects should layer `docker compose` files to support the different ways these might be consumed. The following layers are suggested:
 
-### Raw Configuration
+### "Raw" Configuration
 
 This docker compose file might be included by other projects in their integration tests. In this mode the services will appear in the other project's "test" docker compose project. Any environment settings will come from the parent project.
 
 This docker layer should start the minimum number of services needed to support the interface that the project offers to other projects, fetching pre-built images from GitHub.
 
-It is recommended that no external ports are mapped from these containers and no external volumes should be defined.
+It is recommended that no external ports are mapped from these containers and no external volumes or networks should be required.
 
-### Local Runtime
+### Local "Run"
 
-This layer builds on the above to create a full local deployment of the service that would mirror a production deployment as much as possible. This layer would typically be used by the `make run` target.
+This layer builds on the above to create a full local deployment of the service that would mirror a production deployment as much as possible. This layer would typically be used by the `make run` target, so will be used when other projects reference this project as a dependency.
 
 Environment settings will come from the `.env` and `.envrc` files. Note that `make run` will not typically use the default `COMPOSE_FILE` from the `.env` file as this would include the Local Development layer (see below). The convention is to use a `COMPOSE_FILE_RUN` variable to set a `COMPOSE_FILE` value that excludes the Local Development layer. A developer can override this if they want a dependency to use a local build.
 
@@ -73,11 +73,26 @@ Services that need to communicate with services in other projects should join th
 
 This layer should not depend on any files outside of the root directory of the repo (to allow for shallow cloning).
 
-### Local Development
+### "Build"
 
-This layer builds on the above by adding the necessary build commands to the docker compose services. This layer would typically be used by the `make build` target.
+This layer includes the minimum that is required to build the project and run unit tests. It should not depend heavily on other services, so is likely to extend the Raw layer rather than the Run layer. This layer would typically be used by the `make build` target.
 
-### Production Deployment
+### "Test"
 
-The layer would extend the Local Runtime layer with any production-specific configurations.
+This layer extends the Build layer with any additional services that are required to run integration tests. Note that this should not extend the Run layer as this would then create a dependency on external services with persisted state. If external services are needed then they should be included using the external project's Raw layer to create a minimal container with transient state.
 
+Any external services introduced in this layer would be incorporated into the current project's Docker namespace.
+
+### Local "Dev"
+
+This layer is a combination of the Build and Run layer that allows a developer to run and debug the service locally, pulling in other services as dependencies. This should be the default environment for docker commands so that these can be used without having to rely on equivalents in the Makefile. 
+
+### "Prod" Deployment
+
+The layer would extend the Raw layer with production-specific configurations. It should not reference any dependent or shared services as these will have their own production deployment scripts.
+
+### Diagram
+
+The following diagram depicts these layers in a class style, with the make commands shown as methods:
+
+[![](https://mermaid.ink/img/pako:eNqFUsFOAyEQ_RUyJ5u0P7DxZHrxYGJqT4bEIMy2mF3YwNDG1P13B6h2t2qcC8xj5r15wAm0NwgN6E7FuLZqF1QvneAoiNioo3QzIDlxqkCODbYY0GmMQgKfSRBt8L3wtMcghuDfUFO81IfkbhY1HevCCuL2Y7XKzHOpu2Q7MxV7zcBXew7CSH_Rle454ZbLp3z3TnfJ1NHZ5z-jW0fI10PWu5dfhOu0RTrrzJXXeJgKGzxMbaTh2gRfcmHivh_sBZuSPwZvrsxXCJbQY-iVNfzCRV4Cm-tRQsNbg61KHUmQbuRSlcg_vTsNDYWESwg-7fbQtKqLnKXBKMLzD_lGB-Wevb_kaCz58HD-U3kZPwHR6LrF?type=png)](https://mermaid.live/edit#pako:eNqFUsFOAyEQ_RUyJ5u0P7DxZHrxYGJqT4bEIMy2mF3YwNDG1P13B6h2t2qcC8xj5r15wAm0NwgN6E7FuLZqF1QvneAoiNioo3QzIDlxqkCODbYY0GmMQgKfSRBt8L3wtMcghuDfUFO81IfkbhY1HevCCuL2Y7XKzHOpu2Q7MxV7zcBXew7CSH_Rle454ZbLp3z3TnfJ1NHZ5z-jW0fI10PWu5dfhOu0RTrrzJXXeJgKGzxMbaTh2gRfcmHivh_sBZuSPwZvrsxXCJbQY-iVNfzCRV4Cm-tRQsNbg61KHUmQbuRSlcg_vTsNDYWESwg-7fbQtKqLnKXBKMLzD_lGB-Wevb_kaCz58HD-U3kZPwHR6LrF)
