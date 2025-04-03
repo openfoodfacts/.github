@@ -119,6 +119,10 @@ Here are the main development projects, under active development:
 ### 🎨 Design
 * [Design team](https://github.com/openfoodfacts/openfoodfacts-design) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-design/issues/3)) ([UXR & Design project management accross Open Food Facts](https://github.com/orgs/openfoodfacts/projects/11))
 
+### Frontend
+* [Open Food Facts Explorer](https://github.com/openfoodfacts/openfoodfacts-explorer) (Svelte) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-explorer/issues/2))
+* [Open Food Facts Web Components](https://github.com/openfoodfacts/openfoodfacts-webcomponents) (Lit) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-webcomponents/issues/29))
+
 ### 🥫 Server
 * [Server](https://github.com/openfoodfacts/openfoodfacts-server) (Perl, HTML, CSS, Dockerized) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-server/issues/5529)) ([Server-side project management](https://github.com/orgs/openfoodfacts/projects/12))
 * [Content pages for the web server](https://github.com/openfoodfacts/openfoodfacts-web) (HTML/CSS) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-web/issues/206))
