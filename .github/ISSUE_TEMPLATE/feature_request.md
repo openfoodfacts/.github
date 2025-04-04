@@ -16,7 +16,8 @@ assignees: ''
 ### Additional context
 <!-- Please replace me by any other context or screenshots about the feature request here.) -->
 
-### Mockups
+### 🎨 Design & mockups
+<!-- This needs to be mocked up. Please do not proceed to PR until we reach a design agreement in this issue, and we have a mockup. -->
 
 ### Part of
 - # <!-- #1 - Please put the most specific issue possible -->
