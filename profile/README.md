@@ -85,7 +85,7 @@ Here are the main development projects, under active development:
   
   A companion project is the [dart-sdk](https://github.com/openfoodfacts/openfoodfacts-dart/)
 
-- Taxonomy editor
+- Taxonomy editor (Python/React)
 
   An application made with Python/React that simplifies manipulation of the taxonomy (the knowledge graph explaining that - for example - the yogurt is a kind of milk food).
   
@@ -93,7 +93,7 @@ Here are the main development projects, under active development:
 
   [The repository](https://github.com/openfoodfacts/taxonomy-editor) | [What can I work on?]()
   
-- Robotoff
+- Robotoff (Python)
   
   This project groups the machine learning pipelines used by Open Food Facts to simplify contribution. Detecting labels, extracting ingredients…
 
@@ -105,14 +105,14 @@ Here are the main development projects, under active development:
   
   ML research and models can be found in [openfoodfacts-ai repository](https://github.com/openfoodfacts/openfoodfacts-ai/)
 
-- Hunger Games
+- Hunger Games (React)
 
   A web app used to gamify contribution. It's a React web app that asks questions based on predictions made by Robotoff.
   
   [The repository](https://github.com/openfoodfacts/hunger-games/) | [What can I work on?](https://github.com/openfoodfacts/hunger-games/issues/37)
   
 - Other currently important projects:
-
+  - [Open Food Facts Explorer](https://github.com/openfoodfacts/openfoodfacts-explorer) - A new experimental web frontend for Open Food Facts, written in Svelte
   - [Open Food Facts Events](https://github.com/openfoodfacts/openfoodfacts-events) could be the bare bone of gamification, user dashboard, data moderation, but needs help to fix some bug and extend it
   - [Folksonomy engine](https://github.com/openfoodfacts/folksonomy_api) can help extend annotations with free attributes. Bug fixes are needed as well as some extensions
 
@@ -215,7 +215,7 @@ Here are the main development projects, under active development:
 ### 📢 Marketing
 * 📢 Marketing coordination - [Project management](https://github.com/orgs/openfoodfacts/projects/24)
 
-### Former GSOC Projects
+### Other
 * [Knowledge Panels for Facets](https://github.com/openfoodfacts/facets-knowledge-panels/) (Python/FastAPI) ([What can I work on ?](https://github.com/openfoodfacts/facets-knowledge-panels/issues/14))
 * 🧬 [Taxonomy Editor](https://github.com/openfoodfacts/taxonomy-editor) (Python/Neo4J) ([What can I work on ?](https://github.com/openfoodfacts/taxonomy-editor/issues/30))
 * [Community Portal](https://github.com/openfoodfacts/community-portal) (Paused)
