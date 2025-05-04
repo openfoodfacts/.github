@@ -160,6 +160,7 @@ Here are the main development projects, under active development:
 ### 🧽 Data quality tools
 * [Power User Script - enhance OFF on Chrome and Firefox](https://github.com/openfoodfacts/power-user-script) (JS) ([What can I work on ?](https://github.com/openfoodfacts/power-user-script/issues/64))
 * Nutri-Patrol ([frontend](https://github.com/openfoodfacts/nutripatrol-frontend) - [backend](https://github.com/openfoodfacts/nutripatrol)) ([What can I work on (backend) ?](https://github.com/openfoodfacts/nutripatrol/issues/24)) - ([What can I work on (frontend) ?](https://github.com/openfoodfacts/nutripatrol-frontend/issues/71))
+* [Wiki page](https://wiki.openfoodfacts.org/Data_quality)
 
 ### Language SDKs
 * Consolidated issue management for all SDKs: https://github.com/orgs/openfoodfacts/projects/26/views/1
@@ -170,15 +171,15 @@ Here are the main development projects, under active development:
 * [API documentation project management](https://github.com/orgs/openfoodfacts/projects/25)
 
 ### 📢 Marketing
-* 📢 Marketing coordination - [Project management](https://github.com/orgs/openfoodfacts/projects/24)
+* 📢 Marketing coordination - [Project management](https://github.com/orgs/openfoodfacts/projects/24) - [Wiki page](https://wiki.openfoodfacts.org/Marketing)
 
 ### Old - Unsupported mobile apps (classic and experimental)
 * [Classic app - Android](https://github.com/openfoodfacts/openfoodfacts-androidapp) (Kotlin) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4169)) ([Classic app - Android project management](https://github.com/orgs/openfoodfacts/projects/22) - [Classic app - iPhone](https://github.com/openfoodfacts/openfoodfacts-ios) (Swift) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-ios/issues/912)) ([Classic app - iPhone project management](https://github.com/orgs/openfoodfacts/projects/23) - [Ubuntu Mobile](https://github.com/openfoodfacts/openfoodfacts-ubuntu) ([What can I work on ?](https://github.com/openfoodfacts/openfoodfacts-ubuntu/issues/37)) - [Vintage app - FirefoxOS](https://github.com/openfoodfacts/openfoodfacts-ffos) - [Vintage app - Cordova](https://github.com/openfoodfacts/openfoodfacts-cordova-app) - [Vintage app - Cordova - Open Beauty Facts](https://github.com/openfoodfacts/openbeautyfacts-cordova-app) - [Folksonomy mobile demo app](https://github.com/openfoodfacts/folksonomy_mobile_experiment) ([What can I work on ?](https://github.com/openfoodfacts/folksonomy_mobile_experiment/issues/7))
 
 ### Non Food products
-* 🧴 Cosmetics - [Open Beauty Facts project management](https://github.com/orgs/openfoodfacts/projects/9)
-* 📸 Products - [Open Products Facts project management](https://github.com/orgs/openfoodfacts/projects/43)
-* 🐾 Pet Food - [Open Pet Food Facts project management](https://github.com/orgs/openfoodfacts/projects/36)
+* 🧴 Cosmetics - [Open Beauty Facts project management](https://github.com/orgs/openfoodfacts/projects/9) - [Wiki page](https://wiki.openfoodfacts.org/Open_Beauty_Facts)
+* 📸 Products - [Open Products Facts project management](https://github.com/orgs/openfoodfacts/projects/43) - [Wiki page](https://wiki.openfoodfacts.org/Open_Products_Facts)
+* 🐾 Pet Food - [Open Pet Food Facts project management](https://github.com/orgs/openfoodfacts/projects/36) - [Wiki page](https://wiki.openfoodfacts.org/Open_Pet_Food_Facts)
 
 ### Who do I talk to?
 
