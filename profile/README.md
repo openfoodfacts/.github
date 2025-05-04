@@ -5,6 +5,7 @@
 </picture>
 
 <img id="major_components_map" width="963" alt="image" src="https://github.com/user-attachments/assets/57bcc41c-78ea-47ec-aa15-3784f1c48210">
+
 [update me if needed](https://docs.google.com/presentation/d/1gRHhQY4F9nqnpFtQqfFka1umh1i0Cxy-qmb48pXCPdo/edit#slide=id.g3006187d6b8_0_0)
 
 # Open Food Facts
