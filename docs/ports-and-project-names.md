@@ -20,6 +20,7 @@ You do not need to track the individual ports that you use here, please do that 
 | 80 | po_off | https://github.com/openfoodfacts/openfoodfacts-server |
 | 5500-5509 | robotoff | https://github.com/openfoodfacts/robotoff |
 | 5510-5519 | off-query | https://github.com/openfoodfacts/openfoodfacts-query |
+| 5520-5529 | recipe-estimator | https://github.com/openfoodfacts/recipe-estimator |
 | 5600-5609 | openfoodfacts-auth | https://github.com/openfoodfacts/openfoodfacts-auth |
 
 
