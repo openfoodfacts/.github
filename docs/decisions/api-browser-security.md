@@ -4,7 +4,7 @@
 
 Currently re-users of the Open Food Facts APIs have two options for authentication, where this is required:
 
-- pass the username and password with each request using HTTP Basic Authentication
+- pass the username and password with each request as query or form parameters
 - use the login API to obtain a session cookie
 
 However, in both cases this requires the consumer to know the username and password for the contributor which is not best practice and would not support other authentication mechanisms like passkeys of social login.
@@ -15,6 +15,8 @@ The introduction of Keycloak allows us to use OAuth and OIDC authentication mech
 
 However, there are a number of articles, such as [this one](https://ianlondon.github.io/posts/dont-use-jwts-for-sessions/) advise against the use of JWTs in browser apps.
 
+Another potential concern is that a malicious app could potentially use another app's client id and capture the user's entered credentials and / or redirect URL in an embedded WebView. The [current advice](https://datatracker.ietf.org/doc/html/rfc8252#section-8.12) is not to use Embedded User-Agents, like WebViews, for authentication. [User agent filtering](https://blog.please-open.it/posts/user-agent-filter-authenticator/) can mitigate this although it could still be circumvented by user agent manipulation in the WebView, but user agent filtering could still promote the best-practice of using the main browser or an In-App browser rather than a WebView.
+
 The purpose of this document is to determine the best way forward.
 
 ## Decision Drivers
@@ -22,6 +24,7 @@ The purpose of this document is to determine the best way forward.
 * at no point should a re-users application need to know a user's username and password
 * users should not be forced to log in again on a regular basis
 * the authentication process should follow industry standard practice as closely as possible to reduce friction for API re-users and Open Food Facts code contributors
+* many re-users create apps that do not have a backend, e.g. 
 * the level of protection should be proportionate to the sensitivity of the APIs, e.g. there is minimal benefit to an attacker in being able to submit malicious food data contributions on a user's behalf
 
 ## Considered Options
@@ -31,21 +34,20 @@ The purpose of this document is to determine the best way forward.
 
 ## Decision Outcome
 
-Chosen option: "{title of option 1}", because
-{justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
+Chosen option: "Allow Access Tokens to be used in all API requests", because we need to be able to support apps with no backend and therefore no secure way of storing a client secret.
 
-<!-- This is an optional element. Feel free to remove. -->
 ### Consequences
 
-{Provide detail on the implications of making this decision and how any foreseen problems can be mitigated}
+User Agent Filtering could be implemented to ensure that apps don't inadvertently use a WebView in the authentication flow.
 
-<!-- This is an optional element. Feel free to remove. -->
+The Keycloak [Revoke Refresh Token](https://www.keycloak.org/docs/latest/server_admin/index.html#_offline-access) option should be enabled so that a Refresh Token can only be used once.
+
+Any client that needs permissions to make contributions directly (not on behalf of a user) should not support user authentication flows to discourage placing the client secret in a browser.
+
 ### Confirmation
 
-{Describe how the implementation of/compliance with the ADR is confirmed. E.g., by a review or an ArchUnit test.
- Although we classify this element as optional, it is included in most ADRs.}
+Re-user clients should be created via a standard tool so that permissions are set correctly, depending on the type of client.
 
-<!-- This is an optional element. Feel free to remove. -->
 ## Pros and Cons of the Options
 
 ### Allow Access Tokens to be used in all API requests
@@ -55,6 +57,7 @@ With this approach we make it the re-user's responsibility to secure their Acces
 This can be mitigated to some extent by enabling the [Revoke Refresh Token](https://www.keycloak.org/docs/latest/server_admin/index.html#_offline-access) option so that a Refresh Token can only be used once. However, there are still attacks that can get around this.
 
 * Good: Simplest to implement. API calls are the same whether from a web application, mobile application or backend
+* Neutral: The client would only be able to call authenticated APIs on behalf of a user, so user consent would always be required
 * Bad: Open to XSS attacks or others depending on how the Access / Refresh Token is stored
 
 ### Only allow Authenticated APIs to be called from backends
@@ -62,13 +65,5 @@ This can be mitigated to some extent by enabling the [Revoke Refresh Token](http
 This could be achieved by disabling CORS on our authenticated APIs and only creating non-public clients in Keycloak, thus preventing Implicit or PKCE login flows.
 
 * Good: There is no incentive for a re-user to store an Access Token in the browser
-* Neutral: Increased latency (but this only applies to authenticated actions like product updates where the payload is small)
+* Neutral: Increased latency (but this only applies to authenticated actions like product updates where the frequency is low)
 * Bad: Web applications will always need a corresponding backend to obtain Access Tokens and call authenticated APIs
-
-<!-- This is an optional element. Feel free to remove. -->
-## More Information
-
-{You might want to provide additional evidence/confidence for the decision outcome here and/or
- document the team agreement on the decision and/or
- define when/how this decision the decision should be realized and if/when it should be re-visited.
-Links to other decisions and resources might appear here as well.}
