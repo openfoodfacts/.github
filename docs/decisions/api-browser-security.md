@@ -1,17 +1,17 @@
-# API Security when calling APIS from a Browser Application
+# API Security when calling APIs from a Browser Application
 
 ## Context and Problem Statement
 
-Currently re-users of the Open Food Facts APIs have two options for authentication, where this is required:
+Currently, re-users of the Open Food Facts APIs have two options for authentication, where this is required:
 
 - pass the username and password with each request as query or form parameters
 - use the login API to obtain a session cookie
 
 However, in both cases this requires the consumer to know the username and password for the contributor which is not best practice and would not support other authentication mechanisms like passkeys of social login.
 
-Also, if a session cookie is created on the openfoodfacts.org domain via a legitimate web application this would allow any other web application to also make authenticated API requests.
+Also, if a session cookie is created on the openfoodfacts.org domain via a legitimate web application, this would allow any other web application to also make authenticated API requests.
 
-The introduction of Keycloak allows us to use OAuth and OIDC authentication mechanisms. This allows the user to login via their preferred method and once Keycloak has confirmed their identity an Access Token is issued which can be used to call APIs that require authentication.
+The introduction of Keycloak allows us to use OAuth and OIDC authentication mechanisms. This allows the user to login via their preferred method and once Keycloak has confirmed their identity, an Access Token is issued which can be used to call APIs that require authentication.
 
 However, there are a number of articles, such as [this one](https://ianlondon.github.io/posts/dont-use-jwts-for-sessions/) advise against the use of JWTs in browser apps.
 
@@ -24,7 +24,7 @@ The purpose of this document is to determine the best way forward.
 * at no point should a re-users application need to know a user's username and password
 * users should not be forced to log in again on a regular basis
 * the authentication process should follow industry standard practice as closely as possible to reduce friction for API re-users and Open Food Facts code contributors
-* many re-users create apps that do not have a backend, e.g. 
+* many re-users create apps that do not have a backend, e.g. [waistline](https://github.com/davidhealey/waistline)
 * the level of protection should be proportionate to the sensitivity of the APIs, e.g. there is minimal benefit to an attacker in being able to submit malicious food data contributions on a user's behalf
 
 ## Considered Options
