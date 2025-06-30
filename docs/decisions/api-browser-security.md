@@ -31,18 +31,21 @@ The purpose of this document is to determine the best way forward.
 
 * Allow access tokens to be used for API requests, irrespective of origin
 * Disable CORS for authenticated Open Food Facts APIs so that access tokens can only be used from the re-user's backend
+* Implement CORS-enabled authentication endpoint to start a session
 
 ## Decision Outcome
 
-Chosen option: "Allow Access Tokens to be used in all API requests", because we need to be able to support apps with no backend and therefore no secure way of storing a client secret.
+Chosen option: "Implement CORS-enabled authentication endpoint to start a session", because this is the most secure way to support apps with no backend and therefore no secure way of storing a client secret.
 
 ### Consequences
 
-User Agent Filtering could be implemented to ensure that apps don't inadvertently use a WebView in the authentication flow.
+Browser applications will need to call the "Login API" after obtaining an access token before calling other APIs. The "Login API" would only support access tokens obtained through a user login flow, i.e not via the client credentials flow.
 
-The Keycloak [Revoke Refresh Token](https://www.keycloak.org/docs/latest/server_admin/index.html#_offline-access) option should be enabled so that a Refresh Token can only be used once.
+CORS will be disallowed on all APIs apart from the "Login API". All APIs will support authentication with an access token or a session cookie.
 
-Any client that needs permissions to make contributions directly (not on behalf of a user) should not support user authentication flows to discourage placing the client secret in a browser.
+The backend will need to periodically refresh the session cookie and check that the session has not been revoked by the user in Keycloak (e.g. using the [GET /admin/realms/{realm}/users/{user-id}/sessions](https://www.keycloak.org/docs-api/latest/rest-api/index.html#_get_adminrealmsrealmusersuser_idsessions) API)
+
+User Agent Filtering could be implemented to ensure that mobile apps don't inadvertently use a WebView in the authentication flow.
 
 ### Confirmation
 
@@ -67,3 +70,11 @@ This could be achieved by disabling CORS on our authenticated APIs and only crea
 * Good: There is no incentive for a re-user to store an Access Token in the browser
 * Neutral: Increased latency (but this only applies to authenticated actions like product updates where the frequency is low)
 * Bad: Web applications will always need a corresponding backend to obtain Access Tokens and call authenticated APIs
+
+### Implement CORS-enabled authentication endpoint to start a session
+
+With this approach, a web application would go through a normal PKCE flow to obtain an access token and then use this to call a CORS-enabled endpoint (analogous to the existing Login API) to create a session, which would be stored in a Secure HttpOnly cookie. The web application can then forget the access token as there is no need to use this on subsequent requests. Other APIs would disable CORS so could only be called with a session cookie from a browser, but could still be called with an access token from a mobile app or backend.
+
+* Good: Access tokens are not retained in the browser
+* Neutral: An additional step is required to start a session
+* Neutral: With no refresh token being used the Open Food Facts backend will need to manually check for revoked sessions in Keycloak
