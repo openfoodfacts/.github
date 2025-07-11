@@ -43,15 +43,11 @@ User Agent Filtering could be implemented to ensure that apps don't inadvertentl
 
 The Keycloak [Revoke Refresh Token](https://www.keycloak.org/docs/latest/server_admin/index.html#_offline-access) option should be enabled so that a Refresh Token can only be used once.
 
-Any client that needs permissions to make contributions directly (not on behalf of a user) should not support user authentication flows to discourage placing the client secret in a browser.
+Any client that needs permissions to make contributions directly (not on behalf of a user) should not support user authentication flows to discourage placing the client secret in a browser. Re-user clients should be created via a standard tool so that permissions are set correctly, depending on the type of client.
 
 APIs will all support CORS but the re-user can choose to call a "Login API" after obtaining an access token which will generate a secure session cookie that will be automatically used when calling other APIs. The re-user can then forget the access / refresh tokens. All APIs will support authentication with an access token or a session cookie.
 
-The backend will need to periodically refresh the session cookie and check that the session has not been revoked by the user in Keycloak (e.g. using the [GET /admin/realms/{realm}/users/{user-id}/sessions](https://www.keycloak.org/docs-api/latest/rest-api/index.html#_get_adminrealmsrealmusersuser_idsessions) API)
-
-### Confirmation
-
-Re-user clients should be created via a standard tool so that permissions are set correctly, depending on the type of client.
+The backend APIs will need to periodically refresh the session cookie and check that the session has not been revoked by the user in Keycloak (e.g. using the [GET /admin/realms/{realm}/users/{user-id}/sessions](https://www.keycloak.org/docs-api/latest/rest-api/index.html#_get_adminrealmsrealmusersuser_idsessions) API). If the session is revoked then the API will need to return a not authorized (401) response to prompt the app to redirect back to the login page, obtain another access_token and call the Login API again to refresh the session cookie.
 
 ## Pros and Cons of the Options
 
@@ -79,5 +75,5 @@ With this approach, a web application would go through a normal PKCE flow to obt
 
 * Good: Access tokens are not retained in the browser
 * Neutral: An additional step is required to start a session
-* Bad: With no refresh token being used the Open Food Facts backend will need to manually check for revoked sessions in Keycloak
+* Bad: With no refresh token being used all Open Food Facts backend APIs will need to manually check for revoked sessions in Keycloak when the session cookie expires
 * Bad: Having CORS apply on some, but not all, APIs will be confusing for developers
