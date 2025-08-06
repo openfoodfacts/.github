@@ -42,6 +42,8 @@ The `make run` target must function when only the root folder of the project is 
 
 The `make run` target must not require any specific software to be installed on the host, other than docker, and any operating system commands can assume a bash shell (Windows users are recommended to use the Git Bash shell to run make commands).
 
+Projects should also include a `stop` target in their `Makefile` which stops this service using the "run" configuration and all other services that this service depends on.
+
 If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, such as the `PROJECT1_RUNNING` variable in the example below.
 
 ```make
@@ -77,6 +79,12 @@ run_deps: clone_deps
 		cd ${DEPS_DIR}/$$dep && make run; \
 	done
 
+# Stop dependent projects
+stop_deps:
+	@for dep in ${DEPS} ; do \
+		cd ${DEPS_DIR}/$$dep && make stop; \
+	done
+
 # Called from other projects to start this project
 run:
 ifeq (${PROJECT1_RUNNING},)
@@ -84,9 +92,14 @@ ifeq (${PROJECT1_RUNNING},)
 	$(MAKE) run_deps; \
 	COMPOSE_FILE=${COMPOSE_FILE_RUN} docker compose up -d
 endif
+
+# Called from other projects to stop this project
+stop:
+	COMPOSE_FILE=${COMPOSE_FILE_RUN} docker compose stop
+	$(MAKE) stop_deps
 ```
 
-In this example the `clone_deps` and `run_deps` targets and the code that default the `DEPS_DIR` are reusable. The `run` target and `DEPS` list will be unique to each project.
+In this example the `clone_deps`, `run_deps` and `stop_deps` targets and the code that defaults the `DEPS_DIR` are reusable. The `run` and `stop` targets and the `DEPS` list will be unique to each project.
 
 You may notice that the `run` target overrides the `COMPOSE_FILE` value. This is because the default `.env` settings will support building and running a local image, but for `make run` we want to use a pre-built image.
 
