@@ -42,7 +42,7 @@ The `make run` target must function when only the root folder of the project is 
 
 The `make run` target must not require any specific software to be installed on the host, other than docker, and any operating system commands can assume a bash shell (Windows users are recommended to use the Git Bash shell to run make commands).
 
-Projects should also include a `stop` target in their `Makefile` which stops this service using the "run" configuration and all other services that this service depends on.
+Projects should also include a `stop` target in their `Makefile` which stops this service using the "run" configuration and then stops all other services that this service depends on. Note that the `stop` target should only be called when all services are to be stopped in all projects, as one service may stop shared services that others also depend on.
 
 If a project anticipates that it could be part of a circular reference then it should defend for this by setting a temporary environment variable, such as the `PROJECT1_RUNNING` variable in the example below.
 
