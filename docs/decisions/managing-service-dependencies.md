@@ -76,13 +76,13 @@ clone_deps:
 # Run dependent projects
 run_deps: clone_deps
 	@for dep in ${DEPS} ; do \
-		cd ${DEPS_DIR}/$$dep && make run; \
+		cd ${DEPS_DIR}/$$dep && $(MAKE) run; \
 	done
 
 # Stop dependent projects
 stop_deps:
 	@for dep in ${DEPS} ; do \
-		cd ${DEPS_DIR}/$$dep && make stop; \
+		cd ${DEPS_DIR}/$$dep && $(MAKE) stop; \
 	done
 
 # Called from other projects to start this project
