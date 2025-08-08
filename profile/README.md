@@ -34,31 +34,6 @@ Data about food is of public interest and has to be open. The complete database 
 
 * <https://world.openfoodfacts.org/discover>
 
-## How can I help?
-
-To start contributing, the easiest way it to join us on Slack <https://slack.openfoodfacts.org/> and post an introduction about, what you're interested in, and what you would like to do.
-This would allow other contributors to pinpoint projects that could match your interests. For example:
-
-> I'm interested by the environemental impact of food and would like to help. I'm a designer, but I would also be interested by how you estimate the environmental impact of products.
-
-> I'm using the App, and wondering how could I help to improve it.
-
-> I'm a student, in computer science, and would like to help with some development. I already do some React, and Python.
-
-### Main roles
-
-Since we are on GitHub, you can guess that Open Food Facts needs some contributions from developers and designers (main projects are detailed in next section). But there are plenty of other ways to contribute. For example, you could:
-
-- Add and clean data: You have a product at home, take time to scan it to see if the data is up to date.
-- Spread the word: Speak about the project around you to grow up the community. We [have documents to help you](https://blog.openfoodfacts.org/en/news/presenting-open-food-facts-at-events-study-case).
-- Translate the project: to be more accessible, the [pages needs to be translated](https://crowdin.com/project/openfoodfacts).
-- Improve food understanding: You're interested by the meaning of labels, by distinctions between the various kinds of tomato sauces, we need your help to improve how data are structured.
-- You want to reuse the data for creating your own application, of some scientific studies, feel free to contact us to present the project and ask for help/explanations about data
-- Any other improvement you can think about
-
-## 🐛 Reporting problems or asking for a feature
-
-Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue. You can ask directly in the discussion room if you're not sure
 
 ## 🌐 Translate Open Food Facts in your language
 
@@ -182,32 +157,4 @@ Here are the main development projects, under active development:
 * 📸 Products - [Open Products Facts project management](https://github.com/orgs/openfoodfacts/projects/43) - [Wiki page](https://wiki.openfoodfacts.org/Open_Products_Facts)
 * 🐾 Pet Food - [Open Pet Food Facts project management](https://github.com/orgs/openfoodfacts/projects/36) - [Wiki page](https://wiki.openfoodfacts.org/Open_Pet_Food_Facts)
 
-### Who do I talk to?
 
-* Join our discussion room at <https://slack.openfoodfacts.org/> Make sure to join the appropriate channels. We will be around to help you get started 😊.
-
-## 🙏 Contributors
-
-This project exists thanks to all the people who contribute.
-
-
-## 🙏 Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/openfoodfacts-server#backer)]
-
-<a href="https://opencollective.com/openfoodfacts-server#backers" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/backers.svg?width=890"></a>
-
-## 🙏 Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/openfoodfacts-server#sponsor)]
-
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/0/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/1/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/2/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/3/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/4/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/5/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/6/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/7/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/8/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/openfoodfacts-server/sponsor/9/website" target="_blank"><img src="https://opencollective.com/openfoodfacts-server/sponsor/9/avatar.svg"></a>
