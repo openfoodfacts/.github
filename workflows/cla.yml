@@ -1,0 +1,14 @@
+# .github/workflows/cla.yml
+name: CLA marker
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+
+jobs:
+  cla:
+    uses: Smidjehoien/.github/.github/workflows/cla-mark.yml@main
+    with:
+      cover_org_members: true
+      cover_collaborators: false
+      allowlist_users: "cosmicjesterx"
+      create_missing_labels: true
