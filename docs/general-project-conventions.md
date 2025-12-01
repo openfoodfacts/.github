@@ -34,13 +34,17 @@ It is important to be able to switch between the different OFF repositories but 
 
 Most of the existing OFF repos try to have the commands below in their `Makefile`:
 
-* `make dev` is the only command needed to set up a complete developer environment after cloning the repo. It should hopefully never fail, but if it does anyway please open an issue to track it.
+* `make dev` is the only command needed to set up a complete developer environment after cloning the repo. It should hopefully never fail, but if it does please open an issue to track it.
 
-* `make up`, `make down`, `make hdown`, `make restart`, `make status` map exactly to `docker-compose` commands, respectively `docker-compose up`, `docker-compose down`, `docker-compose down -v`, `docker-compose restart` and `docker-compose ps`.
+* `make up`, `make down`, `make hdown`, `make restart`, `make status` map exactly to `docker-compose` commands, respectively `docker-compose up`, `docker-compose down`, `docker-compose down -v`, `docker-compose restart` and `docker-compose ps`. They will target the locally built image, typically tagged with `dev`, rather than the latest image from GitHub.
 
 * `make build` will build the project's images.
 
-* `make run` will ensure that other projects that this project depends on are running (see [Managing Service Dependencies](decisions/managing-service-dependencies.md)). This involves making a shallow clone into the `DEPS_DIR` folder and calling `make run` on each project it needs. It will then start its own services in docker using the latest built images from GitHub (projects should allow the image tag to be overridden if required). `make run` should not require any local software to be available (other than `bash` and `docker`) and should not depend on any files outside of the root directory of the repo (to allow for shallow cloning).
+* `make run` will ensure that other projects that this project depends on are running (see [Managing Service Dependencies](decisions/managing-service-dependencies.md)). This involves making a shallow clone into the `DEPS_DIR` folder and calling `make run` on each project it needs. It will then start its own services in docker using the _latest built images_ from GitHub (projects should allow the image tag to be overridden if required). `make run` should not require any local software to be available (other than `bash` and `docker`) and should not depend on any files outside of the root directory of the repo (to allow for shallow cloning).
+
+* `make run_dev` starts all dependencies (typically using `make run_deps`) and then starts this container using the locally built (`dev`) image, as opposed to `make run` which uses the latest image from GitHub or `make up` which doesn't touch dependencies.
+
+* `make stop` should stop all containers in this project and then stop all dependencies (by calling `make stop` on all dependencies).
 
 All `Makefile`s will need to explicitly `include` the `.env` and `.envrc` file (if it exists) and then export these variables as otherwise the `Makefile` will not pass environment settings on to target commands. For example:
 
@@ -95,4 +99,44 @@ The layer would extend the Raw layer with production-specific configurations. It
 
 The following diagram depicts these layers in a class style, with the make commands shown as methods:
 
-[![](https://mermaid.ink/img/pako:eNqFUsFOAyEQ_RUyJ5u0P7DxZHrxYGJqT4bEIMy2mF3YwNDG1P13B6h2t2qcC8xj5r15wAm0NwgN6E7FuLZqF1QvneAoiNioo3QzIDlxqkCODbYY0GmMQgKfSRBt8L3wtMcghuDfUFO81IfkbhY1HevCCuL2Y7XKzHOpu2Q7MxV7zcBXew7CSH_Rle454ZbLp3z3TnfJ1NHZ5z-jW0fI10PWu5dfhOu0RTrrzJXXeJgKGzxMbaTh2gRfcmHivh_sBZuSPwZvrsxXCJbQY-iVNfzCRV4Cm-tRQsNbg61KHUmQbuRSlcg_vTsNDYWESwg-7fbQtKqLnKXBKMLzD_lGB-Wevb_kaCz58HD-U3kZPwHR6LrF?type=png)](https://mermaid.live/edit#pako:eNqFUsFOAyEQ_RUyJ5u0P7DxZHrxYGJqT4bEIMy2mF3YwNDG1P13B6h2t2qcC8xj5r15wAm0NwgN6E7FuLZqF1QvneAoiNioo3QzIDlxqkCODbYY0GmMQgKfSRBt8L3wtMcghuDfUFO81IfkbhY1HevCCuL2Y7XKzHOpu2Q7MxV7zcBXew7CSH_Rle454ZbLp3z3TnfJ1NHZ5z-jW0fI10PWu5dfhOu0RTrrzJXXeJgKGzxMbaTh2gRfcmHivh_sBZuSPwZvrsxXCJbQY-iVNfzCRV4Cm-tRQsNbg61KHUmQbuRSlcg_vTsNDYWESwg-7fbQtKqLnKXBKMLzD_lGB-Wevb_kaCz58HD-U3kZPwHR6LrF)
+```mermaid
+classDiagram
+    class Raw {
+        May be referenced by other project integration tests
+    }
+
+    class Run {
+        Run latest image in a container with dependencies.
+        run()
+        stop()
+    }
+    Raw <|-- Run
+
+    class Build {
+        Build project locally and run unit tests
+        build()
+        test()
+    }
+    Raw <|-- Build
+
+    class Test {
+        For running Integration Tests. Includes "Raw" from other projects
+        integration_test()
+    }
+    Build <|-- Test
+
+    class Dev {
+        For bootstrapping a local development environment
+        dev()
+        run_dev()
+    }
+    Run <|-- Dev
+    Build <|-- Dev
+
+    class Prod {
+        Running the container in production
+        up()
+    }
+    Raw <|-- Prod
+
+```
