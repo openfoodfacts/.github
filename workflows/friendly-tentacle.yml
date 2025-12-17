@@ -1,0 +1,66 @@
+name: Friendly tentacle (optional)
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+jobs:
+  greet:
+    if: ${{ vars.ENABLE_FRIENDLY_TENTACLE == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const core = require('@actions/core');
+
+            // Get the issue body or comment body
+            const body = (context.eventName === 'issues'
+              ? context.payload.issue?.body
+              : context.payload.comment?.body) || '';
+
+            const title = context.payload.issue?.title || '';
+            const text = (title + ' ' + body).toLowerCase();
+
+            // Detect greeting patterns
+            const greetingWords = /\b(hi|hello|hey|greetings|howdy|hiya|sup)\b/i;
+            const sunglasses = /8\)/;
+            const wave = /👋|:wave:/;
+
+            const isGreeting = greetingWords.test(text) || sunglasses.test(text) || wave.test(text);
+
+            if (!isGreeting) {
+              core.info('No greeting detected, tentacle remains coiled.');
+              return;
+            }
+
+            // Array of friendly responses in BLEKKSPRUT style
+            const responses = [
+              'Hello, traveler! 🐙\n\nThe tentacles sense your presence. Welcome to the depths of BLEKKSPRUT.\n\n> _Ink gently. Code with personality._',
+              'Hey there! 8)\n\nYou've awakened the friendly tentacle. It waves back, gracefully.\n\n> _In this repository, linear logic bends to concentric truths._',
+              'Greetings! 👋\n\nA tentacle extends in friendship. The protocols here have personality.\n\n> _Feel the ethics. Respect the tentacles. Don't be mean._',
+              'Hi! 🌊\n\nWelcome to the silliest trench, where code sometimes wears tiny hats and the tentacle attempts jazz hands. xD\n\n> _BLEKKSPRUT does not exist to be cloned. It exists to be experienced (preferably with a giggle)._',
+              'Howdy! 🐙✨\n\nThe octopus stirs. Your greeting echoes through the repository's concentric truths.\n\n> _Push bravely. Merge only when the stars align._'
+            ];
+
+            // Select a random response
+            const response = responses[Math.floor(Math.random() * responses.length)];
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: response
+            });
+
+            core.info('Friendly tentacle extended! 🐙');
+
+            core.summary
+              .addHeading('Friendly Tentacle')
+              .addList(['Detected a greeting', 'Extended a tentacle in friendship'])
+              .write();
