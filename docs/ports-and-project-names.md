@@ -33,7 +33,7 @@ You do not need to track the individual ports that you use here, please do that 
 
 | Port Range | Project Name | Repo | Events |
 |---|---|---|---|
-| 6379 (in staging) + 5700-57019 | off_shared | https://github.com/openfoodfacts/openfoodfacts-shared-services |  |
+| 6379, 27017, 5432 + 5700-57009 | off_shared | https://github.com/openfoodfacts/openfoodfacts-shared-services |  |
 
 | 80 | po_off | https://github.com/openfoodfacts/openfoodfacts-server | https://openfoodfacts.github.io/openfoodfacts-server/events/openfoodfacts-server.html |
 | 5500-5509 | robotoff | https://github.com/openfoodfacts/robotoff |  |
