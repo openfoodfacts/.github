@@ -34,12 +34,11 @@ You do not need to track the individual ports that you use here, please do that 
 | Port Range | Project Name | Repo | Events |
 |---|---|---|---|
 | 6379, 27017, 5432 + 5700-5709 | off_shared | https://github.com/openfoodfacts/openfoodfacts-shared-services |  |
-
 | 80 | po_off | https://github.com/openfoodfacts/openfoodfacts-server | https://openfoodfacts.github.io/openfoodfacts-server/events/openfoodfacts-server.html |
 | 5500-5509 | robotoff | https://github.com/openfoodfacts/robotoff |  |
 | 5510-5519 | off-query | https://github.com/openfoodfacts/openfoodfacts-query | https://openfoodfacts.github.io/openfoodfacts-query/docs/events/openfoodfacts-query.html |
 | 5520-5529 | recipe-estimator | https://github.com/openfoodfacts/recipe-estimator |  |
-| 5600-5609 | openfoodfacts-auth | https://github.com/openfoodfacts/openfoodfacts-auth | https://openfoodfacts.github.io/openfoodfacts-auth/docs/events/openfoodfacts-auth.html |
-| 8086, 8200-8210, 9090, 9114, 9115, 9200 | monitoring | https://github.com/openfoodfacts/openfoodfacts-monitoring | |
+| 5600, 5602-5609 | openfoodfacts-auth | https://github.com/openfoodfacts/openfoodfacts-auth | https://openfoodfacts.github.io/openfoodfacts-auth/docs/events/openfoodfacts-auth.html |
+| 3000, 5601, 8086, 8200-8210, 8280-8289, 9090, 9114, 9115, 9200, 9300 | monitoring | https://github.com/openfoodfacts/openfoodfacts-monitoring | |
 
 
