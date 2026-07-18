@@ -95,7 +95,7 @@ ingredients:en-fruit a off:Ingredient;
     skos:prefLabel "fruit"@en;
 ```
 
-* Good: Allows domain and range to be used effectively in editing tools
+* Good: Can define expected properties (and their constraints) using `rdfs:domain` and `rdfs:range`, supporting auto-suggest in editing tools
 * Good: No reasoning required to determine class membership
 * Bad: Users must remember to make all entries an instance of this class
 * Bad: Tools like VocBench don't enforce SHACL rules by default
@@ -135,4 +135,5 @@ ingredients:en-fruit a skos:Class;
 ```
 
 * Good: No redundancy
+* Good: Can define expected properties (and their constraints) using `rdfs:domain` and `rdfs:range`, supporting auto-suggest in editing that support class inference
 * Bad: Tools must be configured with an appropriate reasoner for this to work

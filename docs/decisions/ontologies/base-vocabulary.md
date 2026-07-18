@@ -14,11 +14,13 @@ There are a number of different core vocabularies that we could use as the basis
 
 * [Web Ontology Language (OWL)](https://en.wikipedia.org/wiki/Web_Ontology_Language)
 * [Simple Knowledge Organization System (SKOS)](https://en.wikipedia.org/wiki/Simple_Knowledge_Organization_System)
-* Our own lightweight [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) vocabulary
+* Our own lightweight [Resource Description Framework (RDF)](https://en.wikipedia.org/wiki/Resource_Description_Framework) vocabulary and [RDF Schema (RDFS)](https://en.wikipedia.org/wiki/RDF_Schema)
 
 ## Decision Outcome
 
-We decided to use SKOS as it is more flexible for crowd-sourced data but still has accepted methods for "inheritance" and propagation of properties and has good tooling support.
+We decided to use SKOS as the foundation for our taxonomies as it is more flexible for crowd-sourced data but still has accepted methods for "inheritance" and propagation of properties and has good tooling support.
+
+However, we will also supplement this with our own RDF Schema to define expected properties and allowable values, potentially enforceable with [SHACL](https://en.wikipedia.org/wiki/SHACL) rules.
 
 ## Pros and Cons of the Options
 
@@ -41,7 +43,7 @@ This vocabulary is mainly designed for taxonomies and thesauri so would seem a n
 * Neutral: May need to add further validation, e.g. [Shapes Constraint Language (SHACL)](https://en.wikipedia.org/wiki/SHACL) to enforce important rules
 * Neutral: Will require thorough documentation on how to determine inherited properties
 
-### Lightweight RDF
+### Lightweight RDF and RDFS
 
 * Good: Maximum flexibility to define our own structure
 * Bad: Not reusing existing standards

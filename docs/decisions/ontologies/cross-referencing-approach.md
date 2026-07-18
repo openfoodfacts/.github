@@ -10,7 +10,9 @@ Our taxonomies express many concept that are also already expressed in other Ont
 * SNOMED [Vegan diet](http://snomed.info/id/1255165006)
 * Schema.org [VeganDiet](https://schema.org/VeganDiet)
 
-This document considers the general approach for linking to these external ontologies and how to consider which one to use.
+The above is an example of a "classification" when used in the context of a taxonomy like Ingredients, as many Ingredients will have a Vegan classification, i.e. a many to one relationship. However, we also define other properties, such as links to CIQUAL codes, where this is more of a "same as" or "similar to" relationship, i.e. one to one.
+
+This document considers the general approach for linking to these external ontologies.
 
 ## Decision Drivers
 
