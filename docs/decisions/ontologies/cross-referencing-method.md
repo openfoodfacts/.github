@@ -27,6 +27,10 @@ There are many different ways we can use to assert a relationship between an ite
 
 Chosen option: "Define our own unique properties" for links to other ontologies, because this provides maximum expressiveness and control. However, we would still use standard `skos:broader` / `skos:narrower` to define parent child relationships within our own taxonomies to maximize compatibility with existing SKOS tooling.
 
+## Unresolved Issues
+
+There is no "original" CIQUAL ontology, although CIQUAL terms are included in an [ontology](https://entrepot.recherche.data.gouv.fr/dataset.xhtml?persistentId=doi:10.15454/6CEYU3) that links CIQUAL to LanguaL. However, in this case each CIQUAL entry is defined as a generic `owl:Class`, there is no overarching class for CIQUAL items. Hence, the `rdfs:range` on our property could only be `owl:Class` which would not limit us to CIQUAL items.
+
 ## Pros and Cons of the Options
 
 ### Use existing SKOS relationships
