@@ -31,6 +31,12 @@ Chosen option: Use "Our own level of indirection" when referencing a foreign ite
 
 This gives us maximum flexibility to extend and translate our classification systems without introducing unnecessary levels of indirection.
 
+## Consequences
+
+We would retain our existing taxonomies even for generic concepts like languages, countries and allergens, adding cross-references where appropriate.
+
+We would also need to generate our own ontologies for things like dietary preferences, where a taxonomy does not currently exist. We may choose to only include these in the RDF representation of our taxonomies or we may decide to create a "traditional" taxonomy file for each of these concepts.
+
 ## Pros and Cons of the Options
 
 ### Direct References
