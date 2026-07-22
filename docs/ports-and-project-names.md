@@ -40,3 +40,4 @@ You do not need to track the individual ports that you use here, please do that 
 | 5520-5529 | recipe-estimator | https://github.com/openfoodfacts/recipe-estimator |  |
 | 5600-5609 | openfoodfacts-auth | https://github.com/openfoodfacts/openfoodfacts-auth | https://openfoodfacts.github.io/openfoodfacts-auth/docs/events/openfoodfacts-auth.html |
 | 8086, 8200-8210, 9090, 9114, 9115, 9200 | monitoring | https://github.com/openfoodfacts/openfoodfacts-monitoring | |
+| 3000      | off-explorer | https://github.com/openfoodfacts/openfoodfacts-explorer/ | |
