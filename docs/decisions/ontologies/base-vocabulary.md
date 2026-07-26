@@ -2,7 +2,7 @@
 
 ## Context and Problem Statement
 
-There are a number of different core vocabularies that we could use as the basis for our taxonomies.
+There are a number of different core vocabularies that we could use as the basis to describe our taxonomies as linked open data (mainly RDF based).
 
 ## Decision Drivers
 
