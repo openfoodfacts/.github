@@ -1,0 +1,8 @@
+{
+  "name": "Merge Conflicts Labeler",
+  "description": "Label PRs with merge conflicts, and remove the label once they are resolved",
+  "iconName": "docker_compose",
+  "filePatterns": [
+    "^merge-conflict-autolabel.yml$"
+  ]
+}
