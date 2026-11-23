@@ -1,0 +1,18 @@
+title: "[Idea] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share an idea or proposal for Open Food Facts! Please check existing discussions and issues first.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Idea summary
+      description: What are you proposing and why would it benefit Open Food Facts?
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details & alternatives
+      description: Any mockups, examples, or alternative approaches you considered.
