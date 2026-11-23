@@ -1,0 +1,5 @@
+{
+  "name": "Verify Actions Lock",
+  "description": "Check that .github/workflows/actions.lock is in sync with the workflows (run `gh actions-lock` after adding this workflow).",
+  "iconName": "docker_compose"
+}
