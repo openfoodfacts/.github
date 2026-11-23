@@ -1,0 +1,18 @@
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? Check the [Open Food Facts Wiki](https://wiki.openfoodfacts.org/Tech_Team) or [Slack](https://slack.openfoodfacts.org/) as well.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What are you trying to do, and where did you get stuck?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Include relevant versions, OS, commands run, or links to documentation you already checked.

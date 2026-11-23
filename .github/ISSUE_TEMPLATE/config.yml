@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a question on Slack
+    url: https://slack.openfoodfacts.org/
+    about: Join the Open Food Facts Slack to ask questions, get onboarding help, or discuss ideas.
+  - name: 📚 Tech Team Wiki & Documentation
+    url: https://wiki.openfoodfacts.org/Tech_Team
+    about: Read our technical documentation, architecture notes, and contributor onboarding guide.
+  - name: 🔒 Report a Security Vulnerability
+    url: https://github.com/openfoodfacts/.github/blob/main/SECURITY.md
+    about: Please do NOT open public issues for security vulnerabilities. Follow our Security Policy to report privately.

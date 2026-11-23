@@ -1,0 +1,34 @@
+name: Feature request
+description: Suggest an idea or enhancement for this project
+title: ''
+type: '✨ Enhancement'
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: A clear and concise description of what the problem or need is (e.g. "I'm always frustrated when...").
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: design-mockups
+    attributes:
+      label: Design & mockups
+      description: If this affects the UI, please add mockups or wireframes. We recommend agreeing on the design in the issue before opening a PR.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other context, alternatives considered, or screenshots about the feature request here.
+  - type: input
+    id: part-of
+    attributes:
+      label: Part of
+      description: Add the parent issue or epic number preceded by `#` (e.g. `#1`), if applicable.
